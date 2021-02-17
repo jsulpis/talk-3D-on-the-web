@@ -1,13 +1,15 @@
 <template>
   <div class="reveal">
     <div class="slides">
-      <section>Section 1</section>
+      <Intro />
       <section>Section 2</section>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import Intro from "./components/Intro.vue";
+</script>
 
 <style>
 #app {

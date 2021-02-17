@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "reveal.js": "^4.1.0",
+    "three": "^0.125.2",
     "vue": "^3.0.5"
   },
   "devDependencies": {
