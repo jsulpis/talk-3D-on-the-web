@@ -26,7 +26,7 @@ export default function useThreeBasicScene(canvas: HTMLCanvasElement) {
   });
   renderer.setSize(sizes.width, sizes.height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setClearColor(0x333333);
+  renderer.setClearColor("#222");
   renderer.physicallyCorrectLights = true;
   renderer.outputEncoding = THREE.sRGBEncoding;
 

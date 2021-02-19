@@ -7,7 +7,9 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "gsap": "^3.6.0",
     "reveal.js": "^4.1.0",
+    "sass": "^1.32.8",
     "three": "^0.125.2",
     "vue": "^3.0.5"
   },

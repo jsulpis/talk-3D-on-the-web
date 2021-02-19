@@ -2,6 +2,7 @@
   <div class="reveal">
     <div class="slides">
       <Intro />
+      <CSSWaveAnimation />
       <section>Section 2</section>
     </div>
   </div>
@@ -9,10 +10,12 @@
 
 <script setup>
 import Intro from "./components/Intro.vue";
+import CSSWaveAnimation from "./components/CSSWaveAnimation.vue";
 </script>
 
 <style>
-#app {
+#app,
+section {
   width: 100%;
   height: 100%;
 }
