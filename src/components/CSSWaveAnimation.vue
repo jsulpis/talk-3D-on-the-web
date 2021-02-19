@@ -56,15 +56,20 @@ onMounted(() => {
 
 <style>
 :root {
-  --numRowsCols: 10;
-  --cube-size: 60px;
+  --numRowsCols: 8;
+  --cube-size: 70px;
   --grid-gap: 0px;
 }
 </style>
 
 <style lang="scss" scoped>
 section {
-  background: linear-gradient(80deg, #2c5364, #203a43, #0f2027);
+  background: linear-gradient(
+    80deg,
+    adjust-color(#2c5364, $hue: 15deg, $saturation: 10%),
+    adjust-color(#203a43, $hue: 15deg, $saturation: 10%),
+    adjust-color(#0f2027, $hue: 15deg, $saturation: 10%)
+  );
   overflow: hidden;
 }
 
@@ -116,32 +121,32 @@ section {
 }
 
 .face--front {
-  background: #0f2027;
+  background: adjust-color(#0f2027, $hue: 145deg, $saturation: 0%);
   transform: translateZ(calc(var(--cube-size) / 2));
 }
 
 .face--back {
-  background: #2c5364;
+  background: adjust-color(#2c5364, $hue: 145deg, $saturation: 0%);
   transform: translateZ(calc((var(--cube-size) * -1) / 2)) rotateY(180deg);
 }
 
 .face--left {
-  background: #18303a;
+  background: adjust-color(#18303a, $hue: 145deg, $saturation: 0%);
   transform: translateX(calc((var(--cube-size) * -1) / 2)) rotateY(-90deg);
 }
 
 .face--right {
-  background: #0f2027;
+  background: adjust-color(#0f2027, $hue: 145deg, $saturation: 0%);
   transform: translateX(calc(var(--cube-size) / 2)) rotateY(90deg);
 }
 
 .face--top {
-  background: #0f2027;
+  background: adjust-color(#0f2027, $hue: 145deg, $saturation: 0%);
   transform: translateY(calc((var(--cube-size) * -1) / 2)) rotateX(90deg);
 }
 
 .face--bottom {
-  background: #2c5364;
+  background: adjust-color(#2c5364, $hue: 145deg, $saturation: 0%);
   transform: translateY(calc(var(--cube-size) / 2)) rotateX(-90deg);
 }
 </style>
