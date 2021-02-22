@@ -1,23 +1,34 @@
 <template>
   <section>
-    <div class="container">
-      <div class="cube">
-        <div class="face face-front"></div>
-        <div class="face face-back"></div>
-        <div class="face face-left"></div>
-        <div class="face face-right"></div>
-        <div class="face face-top"></div>
-        <div class="face face-bottom"></div>
+    <section>
+      <div class="container">
+        <div class="cube">
+          <div class="face face-front"></div>
+          <div class="face face-back"></div>
+          <div class="face face-left"></div>
+          <div class="face face-right"></div>
+          <div class="face face-top"></div>
+          <div class="face face-bottom"></div>
+        </div>
       </div>
-    </div>
+    </section>
+    <section>
+      <CssCubeCode />
+    </section>
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup>
+import CssCubeCode from "./CSSCubeCode.vue";
+</script>
 
-<style scoped lang="scss">
+<style scoped>
 .container {
   --cube-size: 300px;
+  --color-light: #7da3c6;
+  --color-medium: #2e5270;
+  --color-dark: #162939;
+
   background: linear-gradient(#25446b, #0c1a2a);
   display: flex;
   align-items: center;
@@ -33,7 +44,7 @@
   height: var(--cube-size);
   transform-style: preserve-3d;
   transform: rotateX(70deg) rotateZ(30deg) translateZ(-100px);
-  box-shadow: 120px 180px 70px 20px rgba(black, 0.32);
+  box-shadow: 120px 180px 70px 20px #00000032;
 }
 
 .face {
@@ -42,12 +53,8 @@
   height: 100%;
 }
 
-$color-light: #7da3c6;
-$color-medium: #2e5270;
-$color-dark: #162939;
-
 .face-top {
-  background-color: $color-light;
+  background-color: var(--color-light);
   transform: translateZ(var(--cube-size));
 }
 
@@ -57,25 +64,25 @@ $color-dark: #162939;
 }
 
 .face-left {
-  background-color: $color-medium;
+  background-color: var(--color-medium);
   transform: rotateY(-90deg);
   transform-origin: left;
 }
 
 .face-right {
-  background-color: $color-dark;
+  background-color: var(--color-dark);
   transform: rotateY(90deg);
   transform-origin: right;
 }
 
 .face-back {
-  background-color: $color-dark;
+  background-color: var(--color-dark);
   transform: rotateX(90deg);
   transform-origin: top;
 }
 
 .face-front {
-  background-color: $color-medium;
+  background-color: var(--color-medium);
   transform: rotateX(-90deg);
   transform-origin: bottom;
 }
