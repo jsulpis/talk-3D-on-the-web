@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="wave-animation">
     <div class="container">
       <a class="credits" href="https://codepen.io/petebarr/pen/rNBwvyd"
         >Codepen by Pete Barr</a
@@ -28,18 +28,21 @@ onMounted(() => {
   const styleVars = getComputedStyle(document.documentElement);
   const numRowsCols = Number(styleVars.getPropertyValue("--numRowsCols"));
   const numCubes = numRowsCols * numRowsCols;
-  const cube = select(".cube");
-  const grid = select(".grid");
+  const cube = select("#wave-animation .cube");
+  const grid = select("#wave-animation .grid");
 
   for (let i = 0; i < numCubes - 1; i++) {
     const clone = cube.cloneNode(true);
     grid.appendChild(clone);
   }
 
-  gsap.set(".container", { autoAlpha: 1 });
-  gsap.set(".cube", { rotateY: 90, transformOrigin: "right center" });
+  gsap.set("#wave-animation .container", { autoAlpha: 1 });
+  gsap.set("#wave-animation .cube", {
+    rotateY: 90,
+    transformOrigin: "right center",
+  });
 
-  gsap.timeline().to(".cube", {
+  gsap.timeline().to("#wave-animation .cube", {
     duration: 1,
     scaleX: 0.01,
     ease: "sine.inOut",
@@ -57,8 +60,7 @@ onMounted(() => {
 <style>
 :root {
   --numRowsCols: 8;
-  --cube-size: 70px;
-  --grid-gap: 0px;
+  --grid-cube-size: 70px;
 }
 </style>
 
@@ -94,21 +96,20 @@ section {
 
 .grid {
   display: grid;
-  width: calc(var(--numRowsCols) * var(--cube-size));
-  height: calc(var(--numRowsCols) * var(--cube-size));
+  width: calc(var(--numRowsCols) * var(--grid-cube-size));
+  height: calc(var(--numRowsCols) * var(--grid-cube-size));
   transform-style: preserve-3d;
   transform: rotateX(70deg) rotateZ(30deg)
-    translateX(calc(-1 * var(--cube-size) / 2)) translateZ(50px);
+    translateX(calc(-1 * var(--grid-cube-size) / 2)) translateZ(50px);
   grid-template-columns: repeat(var(--numRowsCols), 1fr);
-  grid-template-row: repeat(var(--numRowsCols), 1fr);
-  grid-gap: var(--grid-gap);
+  grid-template-rows: repeat(var(--numRowsCols), 1fr);
   box-shadow: 140px 120px 100px rgba(black, 0.32);
 }
 
 .cube {
   position: relative;
-  width: var(--cube-size);
-  height: var(--cube-size);
+  width: var(--grid-cube-size);
+  height: var(--grid-cube-size);
   transform-style: preserve-3d;
 }
 
@@ -122,31 +123,31 @@ section {
 
 .face--front {
   background: adjust-color(#0f2027, $hue: 145deg, $saturation: 0%);
-  transform: translateZ(calc(var(--cube-size) / 2));
+  transform: translateZ(calc(var(--grid-cube-size) / 2));
 }
 
 .face--back {
   background: adjust-color(#2c5364, $hue: 145deg, $saturation: 0%);
-  transform: translateZ(calc((var(--cube-size) * -1) / 2)) rotateY(180deg);
+  transform: translateZ(calc((var(--grid-cube-size) * -1) / 2)) rotateY(180deg);
 }
 
 .face--left {
   background: adjust-color(#18303a, $hue: 145deg, $saturation: 0%);
-  transform: translateX(calc((var(--cube-size) * -1) / 2)) rotateY(-90deg);
+  transform: translateX(calc((var(--grid-cube-size) * -1) / 2)) rotateY(-90deg);
 }
 
 .face--right {
   background: adjust-color(#0f2027, $hue: 145deg, $saturation: 0%);
-  transform: translateX(calc(var(--cube-size) / 2)) rotateY(90deg);
+  transform: translateX(calc(var(--grid-cube-size) / 2)) rotateY(90deg);
 }
 
 .face--top {
   background: adjust-color(#0f2027, $hue: 145deg, $saturation: 0%);
-  transform: translateY(calc((var(--cube-size) * -1) / 2)) rotateX(90deg);
+  transform: translateY(calc((var(--grid-cube-size) * -1) / 2)) rotateX(90deg);
 }
 
 .face--bottom {
   background: adjust-color(#2c5364, $hue: 145deg, $saturation: 0%);
-  transform: translateY(calc(var(--cube-size) / 2)) rotateX(-90deg);
+  transform: translateY(calc(var(--grid-cube-size) / 2)) rotateX(-90deg);
 }
 </style>

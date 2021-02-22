@@ -2,6 +2,7 @@
   <div class="reveal">
     <div class="slides">
       <Intro />
+      <CSSCube />
       <CSSWaveAnimation />
       <section>Section 2</section>
     </div>
@@ -10,6 +11,7 @@
 
 <script setup>
 import Intro from "./components/Intro.vue";
+import CSSCube from "./components/CSSCube.vue";
 import CSSWaveAnimation from "./components/CSSWaveAnimation.vue";
 </script>
 
