@@ -7,11 +7,9 @@
       <div class="grid">
         <div class="cube">
           <div class="face face--front"></div>
-          <div class="face face--back"></div>
           <div class="face face--left"></div>
-          <div class="face face--right"></div>
-          <div class="face face--top"></div>
           <div class="face face--bottom"></div>
+          <!-- The other faces are always hidden, so I removed them for better performance -->
         </div>
       </div>
     </div>
@@ -64,14 +62,9 @@ onMounted(() => {
 }
 </style>
 
-<style lang="scss" scoped>
+<style scoped>
 section {
-  background: linear-gradient(
-    80deg,
-    adjust-color(#2c5364, $hue: 15deg, $saturation: 10%),
-    adjust-color(#203a43, $hue: 15deg, $saturation: 10%),
-    adjust-color(#0f2027, $hue: 15deg, $saturation: 10%)
-  );
+  background: linear-gradient(80deg, #25446b, #0c1a2a);
   overflow: hidden;
 }
 
@@ -99,11 +92,10 @@ section {
   width: calc(var(--numRowsCols) * var(--grid-cube-size));
   height: calc(var(--numRowsCols) * var(--grid-cube-size));
   transform-style: preserve-3d;
-  transform: rotateX(70deg) rotateZ(30deg)
-    translateX(calc(-1 * var(--grid-cube-size) / 2)) translateZ(50px);
+  transform: rotateX(70deg) rotateZ(38deg) translateX(-50px) translateZ(50px);
   grid-template-columns: repeat(var(--numRowsCols), 1fr);
   grid-template-rows: repeat(var(--numRowsCols), 1fr);
-  box-shadow: 140px 120px 100px rgba(black, 0.32);
+  box-shadow: 210px 110px 100px rgb(0 0 0 / 28%);
 }
 
 .cube {
@@ -115,39 +107,24 @@ section {
 
 .face {
   position: absolute;
-  left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
 }
 
 .face--front {
-  background: adjust-color(#0f2027, $hue: 145deg, $saturation: 0%);
-  transform: translateZ(calc(var(--grid-cube-size) / 2));
-}
-
-.face--back {
-  background: adjust-color(#2c5364, $hue: 145deg, $saturation: 0%);
-  transform: translateZ(calc((var(--grid-cube-size) * -1) / 2)) rotateY(180deg);
+  background-color: #162939;
+  transform: translateZ(var(--grid-cube-size));
 }
 
 .face--left {
-  background: adjust-color(#18303a, $hue: 145deg, $saturation: 0%);
-  transform: translateX(calc((var(--grid-cube-size) * -1) / 2)) rotateY(-90deg);
-}
-
-.face--right {
-  background: adjust-color(#0f2027, $hue: 145deg, $saturation: 0%);
-  transform: translateX(calc(var(--grid-cube-size) / 2)) rotateY(90deg);
-}
-
-.face--top {
-  background: adjust-color(#0f2027, $hue: 145deg, $saturation: 0%);
-  transform: translateY(calc((var(--grid-cube-size) * -1) / 2)) rotateX(90deg);
+  background-color: #2e5270;
+  transform: rotateY(-90deg);
+  transform-origin: left;
 }
 
 .face--bottom {
-  background: adjust-color(#2c5364, $hue: 145deg, $saturation: 0%);
-  transform: translateY(calc(var(--grid-cube-size) / 2)) rotateX(-90deg);
+  background-color: #7da3c6;
+  transform: rotateX(-90deg);
+  transform-origin: bottom;
 }
 </style>
