@@ -20,26 +20,11 @@
 </template>
 
 <script setup>
-import CssCubeCode from "./CSSCubeCode.vue";
-import * as dat from "dat.gui";
 import { onMounted } from "vue";
+import CssCubeCode from "./CSSCubeCode.vue";
+import useGui from "../hooks/useGui";
 
-const gui = new dat.GUI({
-  closed: true,
-});
-gui.hide();
-
-const toggleGui = () => {
-  if (gui.closed) {
-    gui.open();
-    gui.show();
-  } else {
-    gui.hide();
-    gui.close();
-  }
-};
-
-const destroyGui = () => gui.destroy();
+const { gui, toggleGui, destroyGui } = useGui();
 
 const cubeTransform = {
   translateY: 0,
@@ -50,8 +35,11 @@ const frontFaceTransform = {
   rotateX: -90,
 };
 
-let cube;
-onMounted(() => (cube = document.querySelector("#css-cube .cube")));
+let cube, frontFace;
+onMounted(() => {
+  cube = document.querySelector("#css-cube .cube");
+  frontFace = document.querySelector("#css-cube .face-front");
+});
 
 const updateTransform = () => {
   cube.style.transform = `rotateX(70deg) rotateZ(${
@@ -77,9 +65,7 @@ gui
   .max(-90)
   .step(1)
   .onChange(() => {
-    document.querySelector(
-      "#css-cube .face-front"
-    ).style.transform = `rotateX(${frontFaceTransform.rotateX}deg)`;
+    frontFace.style.transform = `rotateX(${frontFaceTransform.rotateX}deg)`;
   });
 </script>
 
