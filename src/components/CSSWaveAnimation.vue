@@ -1,5 +1,5 @@
 <template>
-  <section id="wave-animation">
+  <section id="css-wave-animation">
     <div class="container">
       <a class="credits" href="https://codepen.io/petebarr/pen/rNBwvyd"
         >Codepen by Pete Barr</a
@@ -28,21 +28,21 @@ onMounted(() => {
   const styleVars = getComputedStyle(document.documentElement);
   const numRowsCols = Number(styleVars.getPropertyValue("--numRowsCols"));
   const numCubes = numRowsCols * numRowsCols;
-  const cube = select("#wave-animation .cube");
-  const grid = select("#wave-animation .grid");
+  const cube = select("#css-wave-animation .cube");
+  const grid = select("#css-wave-animation .grid");
 
   for (let i = 0; i < numCubes - 1; i++) {
     const clone = cube.cloneNode(true);
     grid.appendChild(clone);
   }
 
-  gsap.set("#wave-animation .container", { autoAlpha: 1 });
-  gsap.set("#wave-animation .cube", {
+  gsap.set("#css-wave-animation .container", { autoAlpha: 1 });
+  gsap.set("#css-wave-animation .cube", {
     rotateY: 90,
     transformOrigin: "right center",
   });
 
-  gsap.timeline().to("#wave-animation .cube", {
+  gsap.timeline().to("#css-wave-animation .cube", {
     duration: 1,
     scaleX: 0.01,
     ease: "sine.inOut",

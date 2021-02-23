@@ -21,4 +21,9 @@ section {
   width: 100%;
   height: 100%;
 }
+
+/* dat.GUI control panel */
+.dg.ac {
+  z-index: 1;
+}
 </style>
