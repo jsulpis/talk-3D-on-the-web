@@ -1,27 +1,33 @@
 <template>
-  <section id="css-wave-animation">
-    <div class="container">
-      <a class="credits" href="https://codepen.io/petebarr/pen/rNBwvyd"
-        >Codepen by Pete Barr</a
-      >
-      <div class="grid">
-        <div class="cube">
-          <div class="face face--front"></div>
-          <div class="face face--left"></div>
-          <div class="face face--bottom"></div>
-          <!-- The other faces are always hidden, so I removed them for better performance -->
+  <section>
+    <section id="css-wave-animation">
+      <div class="container">
+        <a class="credits" href="https://codepen.io/petebarr/pen/rNBwvyd"
+          >Codepen by Pete Barr</a
+        >
+        <div class="grid">
+          <div class="cube">
+            <div class="face face--front"></div>
+            <div class="face face--left"></div>
+            <div class="face face--bottom"></div>
+            <!-- The other faces are always hidden, so I removed them for better performance -->
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+    <section>
+      <CssWaveAnimationCode />
+    </section>
   </section>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import gsap from "gsap";
 import { onMounted } from "vue";
+import CssWaveAnimationCode from "./CssWaveAnimationCode.vue";
 
 onMounted(() => {
-  const select = (e: string) => document.querySelector(e);
+  const select = (e) => document.querySelector(e);
 
   const styleVars = getComputedStyle(document.documentElement);
   const numRowsCols = Number(styleVars.getPropertyValue("--numRowsCols"));
@@ -40,7 +46,7 @@ onMounted(() => {
     transformOrigin: "right center",
   });
 
-  gsap.timeline().to("#css-wave-animation .cube", {
+  gsap.to("#css-wave-animation .cube", {
     duration: 1,
     scaleX: 0.01,
     ease: "sine.inOut",
@@ -63,7 +69,7 @@ onMounted(() => {
 </style>
 
 <style scoped>
-section {
+#css-wave-animation {
   background: linear-gradient(80deg, #25446b, #0c1a2a);
   overflow: hidden;
 }

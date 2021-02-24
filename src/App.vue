@@ -21,6 +21,13 @@ section {
   width: 100%;
   height: 100%;
 }
+section {
+  background-color: #252525;
+}
+
+* {
+  box-sizing: border-box;
+}
 
 /* dat.GUI control panel */
 .dg.ac {

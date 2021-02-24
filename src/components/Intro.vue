@@ -31,5 +31,3 @@ onMounted(() => {
   tick();
 });
 </script>
-
-<style lang="scss" scoped></style>

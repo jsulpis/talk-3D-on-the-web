@@ -1,65 +1,63 @@
 <template>
   <div class="css-cube-code">
-    <pre>
-      <code class="html">
-  <div class="cube">
-    <div class="face face-front"></div>
-    <div class="face face-back"></div>
-    <div class="face face-left"></div>
-    <div class="face face-right"></div>
-    <div class="face face-top"></div>
-    <div class="face face-bottom"></div>
-  </div>
-      </code>
-    </pre>
-    <pre> 
-      <code class="stylesheet">
-  .cube {
-    position: relative;
-    width: var(--cube-size);
-    height: var(--cube-size);
-    transform-style: preserve-3d;
-    transform: rotateX(70deg) rotateZ(30deg) translateZ(-100px);
-  }
+    <!-- prettier-ignore -->
+    <CodeBlock lang="html">
+{{`
+<div class="cube">
+  <div class="face face-front"></div>
+  <div class="face face-back"></div>
+  <div class="face face-left"></div>
+  <div class="face face-right"></div>
+  <div class="face face-top"></div>
+  <div class="face face-bottom"></div>
+</div>
+`}}
+    </CodeBlock>
 
-  .cube:hover {
-    transform: rotateX(70deg) rotateZ(30deg);
-  }
+    <!-- prettier-ignore -->
+    <CodeBlock lang="stylesheet">
+  {{`
+.cube {
+  position: relative;
+  width: var(--cube-size);
+  height: var(--cube-size);
+  transform-style: preserve-3d;
+  transform: rotateX(70deg) rotateZ(30deg) translateZ(-100px);
+}
 
-  .face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
+.cube:hover {
+  transform: rotateX(70deg) rotateZ(30deg);
+}
 
-  .face-top {
-    transform: translateZ(var(--cube-size));
-  }
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 
-  .face-front {
-    transform: rotateX(-90deg);
-    transform-origin: bottom;
-  }
-      </code>
-    </pre>
+.face-top {
+  transform: translateZ(var(--cube-size));
+}
+
+.face-front {
+  transform: rotateX(-90deg);
+  transform-origin: bottom;
+}
+  `}}
+    </CodeBlock>
   </div>
 </template>
 
+<script setup>
+import CodeBlock from "./CodeBlock.vue";
+</script>
+
 <style lang="scss">
 .css-cube-code {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 3rem;
-}
-
-.reveal .css-cube-code > pre {
-  background-color: #1e1e1e;
-  margin: 2rem;
-  border-radius: 8px;
-
-  > code {
-    max-height: none;
-  }
 }
 </style>
