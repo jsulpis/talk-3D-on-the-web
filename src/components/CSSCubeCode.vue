@@ -56,7 +56,7 @@ import CodeBlock from "./CodeBlock.vue";
 .css-cube-code {
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 3rem;
 }

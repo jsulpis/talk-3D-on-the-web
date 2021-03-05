@@ -15,7 +15,6 @@ defineProps(["lang"]);
 
 <style scoped lang="scss">
 .code-container {
-  margin: auto;
   text-align: left;
   color: lightyellow;
 }

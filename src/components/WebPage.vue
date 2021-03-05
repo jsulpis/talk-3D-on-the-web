@@ -1,54 +1,61 @@
 <template>
-  <!-- CodePen by me: https://codepen.io/jsulpis/pen/eYBrqZO -->
-  <section id="web-page">
-    <div class="debug">
-      <label><input type="checkbox" id="debug" /> Debug</label>
-    </div>
-
-    <div class="main">
-      <div class="parallax__group">
-        <div class="parallax__layer parallax__layer--deep hero"></div>
-        <div class="parallax__layer parallax__layer--back">
-          <h3 class="title">3D Website Demo</h3>
-        </div>
+  <!-- CodePen for the page : https://codepen.io/jsulpis/pen/eYBrqZO -->
+  <!-- Inspired by: https://keithclark.co.uk/articles/pure-css-parallax-websites/ -->
+  <section>
+    <section id="web-page">
+      <div class="debug">
+        <label><input type="checkbox" id="debug" /> Debug</label>
       </div>
 
-      <div class="parallax__group">
-        <div class="parallax__layer parallax__layer--base">
-          <div class="page-content">
-            <label>
-              <input type="checkbox" id="depth" />
-              <div class="card">
-                <p>Depth</p>
-                <pre>
+      <div class="main">
+        <div class="parallax__group">
+          <div class="parallax__layer parallax__layer--deep hero"></div>
+          <div class="parallax__layer parallax__layer--back">
+            <h3 class="title">3D Website Demo</h3>
+          </div>
+        </div>
+
+        <div class="parallax__group">
+          <div class="parallax__layer parallax__layer--base">
+            <div class="page-content">
+              <label>
+                <input type="checkbox" id="depth" />
+                <div class="card">
+                  <p>Depth</p>
+                  <pre>
           <code class="stylesheet">.card {
   transform: none;
 }</code>
   </pre>
-              </div>
-            </label>
+                </div>
+              </label>
 
-            <label>
-              <input type="checkbox" id="perspective" />
-              <div class="card">
-                <p>Perspective</p>
-                <pre>
+              <label>
+                <input type="checkbox" id="perspective" />
+                <div class="card">
+                  <p>Perspective</p>
+                  <pre>
             <code class="stylesheet">main {
   perspective: none;
 }</code>
   </pre>
-              </div>
-            </label>
+                </div>
+              </label>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+    <section>
+      <WebPageCode />
+    </section>
   </section>
 </template>
 
 <script setup>
 import { onMounted } from "vue";
 import RevealHighlight from "reveal.js/plugin/highlight/highlight.js";
+import WebPageCode from "./WebPageCode.vue";
 
 onMounted(() => {
   const mainTag = document.querySelector("#web-page .main");
@@ -112,7 +119,6 @@ onMounted(() => {
     left: 0;
     right: 0;
     bottom: 0;
-    transition: transform 200ms ease-in-out;
   }
 }
 
