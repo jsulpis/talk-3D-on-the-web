@@ -16,7 +16,7 @@
       </div>
     </section>
     <section>
-      <CssWaveAnimationCode />
+      <CSSWaveAnimationCode />
     </section>
   </section>
 </template>
@@ -24,7 +24,7 @@
 <script setup>
 import gsap from "gsap";
 import { onMounted } from "vue";
-import CssWaveAnimationCode from "./CssWaveAnimationCode.vue";
+import CSSWaveAnimationCode from "./CSSWaveAnimationCode.vue";
 import Reveal from "reveal.js";
 
 onMounted(() => {

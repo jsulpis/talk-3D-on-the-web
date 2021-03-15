@@ -11,10 +11,10 @@
 </template>
 
 <script setup>
-import Intro from "./components/Intro.vue";
-import WebPage from "./components/WebPage.vue";
-import CSSCube from "./components/CSSCube.vue";
-import CSSWaveAnimation from "./components/CSSWaveAnimation.vue";
+import Intro from "./components/sections/00-intro/Intro.vue";
+import WebPage from "./components/sections/01-web-page/WebPage.vue";
+import CSSCube from "./components/sections/02-css-cube/CSSCube.vue";
+import CSSWaveAnimation from "./components/sections/03-css-wave-animation/CSSWaveAnimation.vue";
 </script>
 
 <style>

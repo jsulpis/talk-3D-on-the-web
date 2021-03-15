@@ -21,8 +21,8 @@
 
 <script setup>
 import { onMounted } from "vue";
-import CssCubeCode from "./CSSCubeCode.vue";
-import useGui from "../hooks/useGui";
+import CssCubeCode from "../../sections/02-css-cube/CSSCubeCode.vue";
+import useGui from "../../../hooks/useGui";
 
 const { gui, toggleGui, destroyGui } = useGui();
 

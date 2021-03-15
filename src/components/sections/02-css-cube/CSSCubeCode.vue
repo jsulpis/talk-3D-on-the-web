@@ -49,7 +49,7 @@
 </template>
 
 <script setup>
-import CodeBlock from "./CodeBlock.vue";
+import CodeBlock from "../../CodeBlock.vue";
 </script>
 
 <style lang="scss">
