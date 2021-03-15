@@ -25,6 +25,7 @@
 import gsap from "gsap";
 import { onMounted } from "vue";
 import CssWaveAnimationCode from "./CssWaveAnimationCode.vue";
+import Reveal from "reveal.js";
 
 onMounted(() => {
   const select = (e) => document.querySelector(e);
@@ -46,18 +47,33 @@ onMounted(() => {
     transformOrigin: "right center",
   });
 
-  gsap.to("#css-wave-animation .cube", {
-    duration: 1,
-    scaleX: 0.01,
-    ease: "sine.inOut",
-    stagger: {
-      each: 0.15,
-      yoyo: true,
-      repeat: -1,
-      grid: [numRowsCols, numRowsCols],
-      from: "start",
-    },
+  let gsapAnimation;
+  // Play the animation when entering the slide, pause when leaving
+  Reveal.addEventListener("slidechanged", function (event) {
+    if (event.currentSlide.id === "css-wave-animation") {
+      if (gsapAnimation) gsapAnimation.play();
+      else gsapAnimation = initGsapAnimation();
+    } else if (
+      event.previousSlide &&
+      event.previousSlide.id === "css-wave-animation"
+    ) {
+      gsapAnimation.pause();
+    }
   });
+
+  const initGsapAnimation = () =>
+    gsap.to("#css-wave-animation .cube", {
+      duration: 1,
+      scaleX: 0.01,
+      ease: "sine.inOut",
+      stagger: {
+        each: 0.15,
+        yoyo: true,
+        repeat: -1,
+        grid: [numRowsCols, numRowsCols],
+        from: "start",
+      },
+    });
 });
 </script>
 

@@ -7,7 +7,7 @@ import RevealHighlight from "reveal.js/plugin/highlight/highlight.js";
 
 createApp(App).mount("#app");
 
-new Reveal().initialize({
+Reveal.initialize({
   history: true,
   width: "100%",
   height: "100%",
