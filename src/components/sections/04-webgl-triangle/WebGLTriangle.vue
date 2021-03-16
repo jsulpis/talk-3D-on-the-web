@@ -5,7 +5,7 @@
         <h1>WebGL</h1>
         <h3>à la rescousse</h3>
         <p class="fragment">(ou presque)</p>
-        <canvas id="triangle" width="400" height="400"></canvas>
+        <canvas id="webglTriangle" width="400" height="400"></canvas>
       </div>
     </section>
     <section>
@@ -19,7 +19,7 @@ import { onMounted } from "@vue/runtime-core";
 import WebGlTriangleCode from "./WebGLTriangleCode.vue";
 
 onMounted(() => {
-  const webglCanvas = document.getElementById("triangle");
+  const webglCanvas = document.getElementById("webglTriangle");
   const gl = webglCanvas.getContext("experimental-webgl");
 
   // Geometry
@@ -87,7 +87,7 @@ onMounted(() => {
     background: linear-gradient(#25446b, #0c1a2a);
   }
 
-  #triangle {
+  #webglTriangle {
     margin-top: 4rem;
   }
 

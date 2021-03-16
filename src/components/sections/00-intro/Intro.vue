@@ -1,6 +1,6 @@
 <template>
   <section>
-    <canvas class="webgl"></canvas>
+    <canvas id="webglIntro"></canvas>
   </section>
 </template>
 
@@ -11,7 +11,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import useThreeBasicScene from "../../../hooks/useThreeBasicScene";
 
 onMounted(() => {
-  const canvas = document.querySelector<HTMLCanvasElement>("canvas.webgl");
+  const canvas = document.querySelector<HTMLCanvasElement>("canvas#webglIntro");
   const { scene, camera, renderer, controls } = useThreeBasicScene(canvas);
 
   camera.position.set(0, 1.2, 8);
