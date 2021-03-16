@@ -1,5 +1,5 @@
 <template>
-  <div class="css-wave-animation-code">
+  <div class="container">
     <CodeBlock lang="javascript">
       {{
         `gsap.to("#css-wave-animation .cube", {
@@ -22,12 +22,3 @@
 <script setup>
 import CodeBlock from "../../CodeBlock.vue";
 </script>
-
-<style scoped>
-.css-wave-animation-code {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-</style>

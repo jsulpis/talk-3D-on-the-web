@@ -2,7 +2,7 @@
   <section id="css-cube">
     <!-- The tabindex allows to focus on the section element. Click anywhere on the page, then press G or D -->
     <section tabindex="0" @keyup.g="toggleGui()" @keyup.d="destroyGui()">
-      <div class="container">
+      <div class="container cube-container">
         <div class="cube">
           <div class="face face-front"></div>
           <div class="face face-back"></div>
@@ -70,17 +70,13 @@ gui
 </script>
 
 <style scoped>
-.container {
+.cube-container {
   --cube-size: 300px;
   --color-light: #7da3c6;
   --color-medium: #2e5270;
   --color-dark: #162939;
 
   background: linear-gradient(#25446b, #0c1a2a);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
   perspective: 1000px;
   position: relative;
 }

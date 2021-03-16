@@ -1,5 +1,5 @@
 <template>
-  <div class="web-page-code">
+  <div class="container">
     <!-- The code below is a simplified version of the real implementation -->
 
     <!-- prettier-ignore -->
@@ -64,11 +64,8 @@ section {
 import CodeBlock from "../../CodeBlock.vue";
 </script>
 
-<style lang="scss">
-.web-page-code {
-  height: 100%;
-  display: flex;
+<style scoped>
+.container {
   justify-content: space-evenly;
-  align-items: center;
 }
 </style>

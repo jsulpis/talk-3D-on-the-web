@@ -5,6 +5,7 @@
       <WebPage />
       <CSSCube />
       <CSSWaveAnimation />
+      <WebGLTriangle />
       <section>Section 2</section>
     </div>
   </div>
@@ -15,6 +16,7 @@ import Intro from "./components/sections/00-intro/Intro.vue";
 import WebPage from "./components/sections/01-web-page/WebPage.vue";
 import CSSCube from "./components/sections/02-css-cube/CSSCube.vue";
 import CSSWaveAnimation from "./components/sections/03-css-wave-animation/CSSWaveAnimation.vue";
+import WebGLTriangle from "./components/sections/04-webgl-triangle/WebGLTriangle.vue";
 </script>
 
 <style>
@@ -25,6 +27,13 @@ section {
 }
 section {
   background-color: #252525;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 * {

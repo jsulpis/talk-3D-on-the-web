@@ -1,7 +1,7 @@
 <template>
   <section>
     <section id="css-wave-animation">
-      <div class="container">
+      <div class="container wave-container">
         <a class="credits" href="https://codepen.io/petebarr/pen/rNBwvyd"
           >Codepen by Pete Barr</a
         >
@@ -90,11 +90,7 @@ onMounted(() => {
   overflow: hidden;
 }
 
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+.wave-container {
   margin: auto;
   perspective: 700px;
   visibility: hidden;

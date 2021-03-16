@@ -1,5 +1,5 @@
 <template>
-  <div class="css-cube-code">
+  <div class="container">
     <!-- prettier-ignore -->
     <CodeBlock lang="html">
 {{`
@@ -52,12 +52,9 @@
 import CodeBlock from "../../CodeBlock.vue";
 </script>
 
-<style lang="scss">
-.css-cube-code {
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+<style scoped>
+.container {
   padding: 3rem;
+  justify-content: space-between;
 }
 </style>

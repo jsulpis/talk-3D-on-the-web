@@ -2,7 +2,7 @@
   <div class="code-container">
     <span class="code-lang">{{ lang }}</span>
     <pre>
-      <code :class="lang"><slot></slot></code>
+      <code :class="lang" :data-line-numbers="lines"><slot></slot></code>
     </pre>
   </div>
 </template>
@@ -10,7 +10,7 @@
 <script setup>
 import { defineProps } from "vue";
 
-defineProps(["lang"]);
+defineProps(["lang", "lines"]);
 </script>
 
 <style scoped lang="scss">
@@ -29,6 +29,18 @@ defineProps(["lang"]);
   background-color: #1e1e1e;
   border-radius: 8px;
   margin: 0 auto;
+  max-height: 80vh;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+  }
 
   > code {
     max-height: none;
