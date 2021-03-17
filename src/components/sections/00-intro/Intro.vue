@@ -12,21 +12,16 @@ import useThreeBasicScene from "../../../hooks/useThreeBasicScene";
 
 onMounted(() => {
   const canvas = document.querySelector<HTMLCanvasElement>("canvas#webglIntro");
-  const { scene, camera, renderer, controls } = useThreeBasicScene(canvas);
+  const { scene, camera, controls, tick } = useThreeBasicScene(canvas);
 
   camera.position.set(0, 1.2, 8);
   controls.target = new THREE.Vector3(0, 1.4, 0);
+  controls.update();
 
   const gltfLoader = new GLTFLoader();
   gltfLoader.load("/intro.glb", (glb) => {
     scene.add(glb.scene);
   });
-
-  const tick = () => {
-    controls.update();
-    renderer.render(scene, camera);
-    window.requestAnimationFrame(tick);
-  };
 
   tick();
 });

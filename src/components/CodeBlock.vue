@@ -49,7 +49,7 @@ defineProps(["lang", "lines"]);
 
   &,
   & > code {
-    width: fit-content;
+    width: fit-content !important;
   }
 }
 </style>

@@ -1,13 +1,18 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
-export default function useThreeBasicScene(canvas: HTMLCanvasElement) {
+export default function useThreeBasicScene(
+  canvas: HTMLCanvasElement,
+  ambientLightStrength = 8
+) {
   // Scene
   const scene = new THREE.Scene();
 
   // Light
-  const ambientLight = new THREE.AmbientLight("#fff", 8);
-  scene.add(ambientLight);
+  if (ambientLightStrength > 0) {
+    const ambientLight = new THREE.AmbientLight("#fff", ambientLightStrength);
+    scene.add(ambientLight);
+  }
 
   const sizes = {
     width: window.innerWidth,
@@ -21,13 +26,15 @@ export default function useThreeBasicScene(canvas: HTMLCanvasElement) {
 
   // Renderer
   const renderer = new THREE.WebGLRenderer({
-    canvas: canvas,
+    canvas,
     antialias: true,
   });
+
   renderer.setSize(sizes.width, sizes.height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setClearColor("#222");
   renderer.physicallyCorrectLights = true;
+  renderer.shadowMap.enabled = true;
   renderer.outputEncoding = THREE.sRGBEncoding;
 
   window.addEventListener("resize", () => {
@@ -44,5 +51,10 @@ export default function useThreeBasicScene(canvas: HTMLCanvasElement) {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   });
 
-  return { scene, camera, renderer, controls };
+  const tick = () => {
+    renderer.render(scene, camera);
+    window.requestAnimationFrame(tick);
+  };
+
+  return { scene, camera, renderer, controls, tick };
 }

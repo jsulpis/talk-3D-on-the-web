@@ -7,6 +7,7 @@
       <CSSWaveAnimation />
       <WebGLTriangle />
       <ThreeCube />
+      <ThreeZenikanard />
     </div>
   </div>
 </template>
@@ -18,6 +19,7 @@ import CSSCube from "./components/sections/02-css-cube/CSSCube.vue";
 import CSSWaveAnimation from "./components/sections/03-css-wave-animation/CSSWaveAnimation.vue";
 import WebGLTriangle from "./components/sections/04-webgl-triangle/WebGLTriangle.vue";
 import ThreeCube from "./components/sections/05-three-cube/ThreeCube.vue";
+import ThreeZenikanard from "./components/sections/06-three-zenikanard/ThreeZenikanard.vue";
 </script>
 
 <style>
