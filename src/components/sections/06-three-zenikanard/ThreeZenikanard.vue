@@ -1,7 +1,9 @@
 <template>
   <section>
     <section>
-      <canvas id="threeZenikanard"></canvas>
+      <div class="container" id="three-zenikanard">
+        <canvas id="threeZenikanard"></canvas>
+      </div>
     </section>
     <section>
       <ThreeZenikanardCode />
@@ -10,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, render } from "vue";
 import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 import useThreeBasicScene from "../../../hooks/useThreeBasicScene";
@@ -22,12 +24,12 @@ onMounted(() => {
   );
   const { scene, camera, renderer, controls } = useThreeBasicScene(canvas, 0);
 
-  // Camera adjustments
+  // General adjustments
   camera.setFocalLength(30);
   camera.position.set(0, 60, 200);
   controls.target.set(0, 30, 0);
   controls.update();
-  scene.background = new THREE.Color("#0c1a2a");
+  renderer.setClearAlpha(0);
 
   // Lights
   const hemisphereLight = new THREE.HemisphereLight("white", "#0c1a2a", 2);
@@ -79,3 +81,9 @@ onMounted(() => {
   })();
 });
 </script>
+
+<style scoped>
+#three-zenikanard {
+  background: linear-gradient(#25446b, #0c1a2a);
+}
+</style>

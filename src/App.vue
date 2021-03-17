@@ -32,6 +32,10 @@ section {
   background-color: #252525;
 }
 
+body.reveal-viewport {
+  background: linear-gradient(#25446b, #0c1a2a);
+}
+
 .container {
   display: flex;
   align-items: center;
