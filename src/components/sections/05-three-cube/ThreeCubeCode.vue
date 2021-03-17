@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <CodeBlock lang="javascript">
+    <CodeBlock lang="javascript" lines="1|3-7|9-12|14-18">
       {{
         `const scene = new THREE.Scene();
 
