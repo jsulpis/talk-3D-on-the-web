@@ -18,7 +18,7 @@ const controls = new OrbitControls(camera, canvas);
 
 const tick = () => {
   renderer.render(scene, camera);
-  window.requestAnimationFrame(tick);
+  requestAnimationFrame(tick);
 };
 tick();
 `

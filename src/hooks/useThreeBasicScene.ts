@@ -54,7 +54,7 @@ export default function useThreeBasicScene(
 
   const tick = () => {
     renderer.render(scene, camera);
-    window.requestAnimationFrame(tick);
+    requestAnimationFrame(tick);
   };
 
   return { scene, camera, renderer, controls, tick };

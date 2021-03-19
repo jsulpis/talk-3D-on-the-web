@@ -6,17 +6,21 @@
       </div>
     </section>
     <section>
-      <ThreeZenikanardCode />
+      <ThreeZenikanardCodeBase />
+    </section>
+    <section>
+      <ThreeZenikanardCodeAnimation />
     </section>
   </section>
 </template>
 
 <script setup lang="ts">
-import { onMounted, render } from "vue";
+import { onMounted } from "vue";
 import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 import useThreeBasicScene from "../../../hooks/useThreeBasicScene";
-import ThreeZenikanardCode from "./ThreeZenikanardCode.vue";
+import ThreeZenikanardCodeBase from "./ThreeZenikanardCodeBase.vue";
+import ThreeZenikanardCodeAnimation from "./ThreeZenikanardCodeAnimation.vue";
 
 onMounted(() => {
   const canvas = document.querySelector<HTMLCanvasElement>(
@@ -57,24 +61,40 @@ onMounted(() => {
 
   // Model
   const fbxLoader = new FBXLoader();
-  let mixer, action;
-  fbxLoader.load("/models/zenikanard_LOD1.fbx", function (object) {
-    object.scale.set(10, 10, 10);
-    object.rotation.y = (3 * Math.PI) / 4;
-    object.children[0].castShadow = true;
+  let mixer: THREE.AnimationMixer, jumpAction: THREE.AnimationAction;
+  fbxLoader.load("/models/zenikanard_LOD1.fbx", (model) => {
+    model.scale.set(10, 10, 10);
+    model.rotation.y = (3 * Math.PI) / 4;
+    model.children[0].castShadow = true;
 
-    mixer = new THREE.AnimationMixer(object);
-    action = mixer.clipAction(object.animations[0]);
+    mixer = new THREE.AnimationMixer(model);
 
-    scene.add(object);
+    // Smoothly stop the animation after the first loop
+    mixer.addEventListener("loop", function (e) {
+      setTimeout(() => {
+        e.action.fadeOut(0.1);
+        setTimeout(() => e.action.stop(), 100);
+      }, 100);
+    });
+
+    jumpAction = mixer.clipAction(model.animations[0]);
+    scene.add(model);
+  });
+
+  document.addEventListener("keypress", function (e: KeyboardEvent) {
+    if (e.key === "Enter") {
+      if (jumpAction.isRunning()) jumpAction.paused = true;
+      else {
+        jumpAction.paused = false;
+        jumpAction.play();
+      }
+    }
   });
 
   // Animation
   const clock = new THREE.Clock();
   (function tick() {
-    if (mixer) {
-      mixer.update(clock.getDelta());
-    }
+    mixer && mixer.update(clock.getDelta());
     renderer.render(scene, camera);
 
     requestAnimationFrame(tick);
