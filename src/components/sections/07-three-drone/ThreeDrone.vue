@@ -1,15 +1,23 @@
 <template>
   <section>
-    <div class="container" id="three-drone">
-      <input type="color" id="droneColor" name="droneColor" value="#ffffff" />
-      <canvas id="threeDrone"></canvas>
-      <a
-        class="credits"
-        href="https://sketchfab.com/3d-models/s9-mini-drone-cf3ed83c1b87486d90435f54c074e16e"
-      >
-        Model by BlueMesh
-      </a>
-    </div>
+    <section>
+      <div class="container" id="three-drone">
+        <input type="color" id="droneColor" name="droneColor" value="#ffffff" />
+        <canvas id="threeDrone"></canvas>
+        <a
+          class="credits"
+          href="https://sketchfab.com/3d-models/s9-mini-drone-cf3ed83c1b87486d90435f54c074e16e"
+        >
+          Model by BlueMesh
+        </a>
+      </div>
+    </section>
+    <section>
+      <ThreeDroneCodeAnimation />
+    </section>
+    <section>
+      <ThreeDroneCodeColor />
+    </section>
   </section>
 </template>
 
@@ -19,6 +27,8 @@ import * as THREE from "three";
 import useThreeBasicScene from "../../../hooks/useThreeBasicScene";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Mesh, MeshStandardMaterial } from "three";
+import ThreeDroneCodeAnimation from "./ThreeDroneCodeAnimation.vue";
+import ThreeDroneCodeColor from "./ThreeDroneCodeColor.vue";
 
 onMounted(() => {
   const canvas = document.querySelector<HTMLCanvasElement>("canvas#threeDrone");
@@ -63,8 +73,8 @@ onMounted(() => {
   let propellers: THREE.Object3D[] = [];
   const PROPELLERS_NAMES = ["Circle002", "Circle003", "Circle004", "Circle005"];
 
-  gltfLoader.load("/models/drone.gltf", (glb) => {
-    drone = glb.scene;
+  gltfLoader.load("/models/drone.gltf", (gltf) => {
+    drone = gltf.scene;
     drone.scale.set(8, 8, 8);
 
     const meshes = drone.children[0].children[0].children[0].children;
@@ -81,9 +91,10 @@ onMounted(() => {
 
     // Hide the ground object
     meshes.find((mesh) => mesh.name === "Circle006").visible = false;
-    scene.add(glb.scene);
+    scene.add(drone);
   });
 
+  // Drone color
   document
     .getElementById("droneColor")
     .addEventListener("input", (e: InputEvent) => {
