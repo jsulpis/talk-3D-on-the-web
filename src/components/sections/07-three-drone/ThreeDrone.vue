@@ -1,6 +1,7 @@
 <template>
   <section>
     <div class="container" id="three-drone">
+      <input type="color" id="droneColor" name="droneColor" value="#ffffff" />
       <canvas id="threeDrone"></canvas>
     </div>
   </section>
@@ -11,6 +12,7 @@ import { onMounted } from "vue";
 import * as THREE from "three";
 import useThreeBasicScene from "../../../hooks/useThreeBasicScene";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { Mesh, MeshStandardMaterial } from "three";
 
 onMounted(() => {
   const canvas = document.querySelector<HTMLCanvasElement>("canvas#threeDrone");
@@ -50,23 +52,31 @@ onMounted(() => {
   // Model
   const gltfLoader = new GLTFLoader();
   let drone: THREE.Group;
+  let droneShellMaterial: MeshStandardMaterial;
   let propellers: THREE.Object3D[] = [];
+  const PROPELLERS_NAMES = ["Circle002", "Circle003", "Circle004", "Circle005"];
 
   gltfLoader.load("/models/drone.gltf", (glb) => {
     drone = glb.scene;
     drone.scale.set(8, 8, 8);
 
-    const propellersNames = [
-      "Circle002",
-      "Circle003",
-      "Circle004",
-      "Circle005",
-    ];
     const meshes = drone.children[0].children[0].children[0].children;
-    propellers = meshes.filter((mesh) => propellersNames.includes(mesh.name));
+
+    droneShellMaterial = (meshes.find((mesh) => mesh.name === "Cube")
+      .children[1] as Mesh).material as MeshStandardMaterial;
+
+    propellers = meshes.filter((mesh) => PROPELLERS_NAMES.includes(mesh.name));
     meshes.find((mesh) => mesh.name === "Circle006").visible = false; // hide the ground object
     scene.add(glb.scene);
   });
+
+  document
+    .getElementById("droneColor")
+    .addEventListener("input", (e: InputEvent) => {
+      const colorHexString = (e.target as HTMLInputElement).value; // ex: "#00000f"
+      const colorHexNumber = parseInt(colorHexString.slice(1), 16); // ex: 15
+      droneShellMaterial.color.setHex(colorHexNumber);
+    });
 
   // Animation
   const clock = new THREE.Clock();
@@ -86,5 +96,22 @@ onMounted(() => {
 <style scoped>
 #three-drone {
   background: linear-gradient(#25446b, #0c1a2a);
+}
+
+input#droneColor {
+  position: fixed;
+  top: 5rem;
+  right: 5rem;
+  transform: translateX(-50%);
+  border-radius: 100%;
+  height: 60px;
+  width: 60px;
+  border: none;
+  outline: none;
+}
+
+input#droneColor::-webkit-color-swatch {
+  border: none;
+  border-radius: 100%;
 }
 </style>
