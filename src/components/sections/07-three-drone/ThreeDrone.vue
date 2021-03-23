@@ -37,7 +37,7 @@ onMounted(() => {
   directionalLight.shadow.camera.bottom = -100;
   directionalLight.shadow.camera.left = -100;
   directionalLight.shadow.camera.right = 100;
-  directionalLight.shadow.radius = 20;
+  directionalLight.shadow.radius = 10;
   scene.add(directionalLight);
 
   // Ground
@@ -62,11 +62,18 @@ onMounted(() => {
 
     const meshes = drone.children[0].children[0].children[0].children;
 
+    // Shadows
+    meshes.forEach((mesh) => (mesh.children[0].castShadow = true));
+
+    // Reference for color picker
     droneShellMaterial = (meshes.find((mesh) => mesh.name === "Cube")
       .children[1] as Mesh).material as MeshStandardMaterial;
 
+    // Reference for animation
     propellers = meshes.filter((mesh) => PROPELLERS_NAMES.includes(mesh.name));
-    meshes.find((mesh) => mesh.name === "Circle006").visible = false; // hide the ground object
+
+    // Hide the ground object
+    meshes.find((mesh) => mesh.name === "Circle006").visible = false;
     scene.add(glb.scene);
   });
 
