@@ -45,6 +45,14 @@ body.reveal-viewport {
   height: 100%;
 }
 
+.reveal a.credits {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  color: white;
+  font-size: 1rem;
+}
+
 * {
   box-sizing: border-box;
 }

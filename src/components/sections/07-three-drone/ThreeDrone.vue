@@ -3,6 +3,12 @@
     <div class="container" id="three-drone">
       <input type="color" id="droneColor" name="droneColor" value="#ffffff" />
       <canvas id="threeDrone"></canvas>
+      <a
+        class="credits"
+        href="https://sketchfab.com/3d-models/s9-mini-drone-cf3ed83c1b87486d90435f54c074e16e"
+      >
+        Model by BlueMesh
+      </a>
     </div>
   </section>
 </template>
@@ -46,6 +52,7 @@ onMounted(() => {
     new THREE.ShadowMaterial({ opacity: 0.4 })
   );
   ground.rotation.x = -Math.PI / 2;
+  ground.position.y = -5;
   ground.receiveShadow = true;
   scene.add(ground);
 

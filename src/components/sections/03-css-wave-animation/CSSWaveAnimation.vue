@@ -97,14 +97,6 @@ onMounted(() => {
   position: relative;
 }
 
-.credits {
-  position: absolute;
-  bottom: 2rem;
-  left: 2rem;
-  color: white;
-  font-size: 1rem;
-}
-
 .grid {
   display: grid;
   width: calc(var(--numRowsCols) * var(--grid-cube-size));
