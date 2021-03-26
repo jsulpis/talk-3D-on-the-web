@@ -9,6 +9,7 @@
       <ThreeCube />
       <ThreeZenikanard />
       <ThreeDrone />
+      <ThreePerf />
     </div>
   </div>
 </template>
@@ -22,6 +23,7 @@ import WebGLTriangle from "./components/sections/04-webgl-triangle/WebGLTriangle
 import ThreeCube from "./components/sections/05-three-cube/ThreeCube.vue";
 import ThreeZenikanard from "./components/sections/06-three-zenikanard/ThreeZenikanard.vue";
 import ThreeDrone from "./components/sections/07-three-drone/ThreeDrone.vue";
+import ThreePerf from "./components/sections/08-three-perf/ThreePerf.vue";
 </script>
 
 <style>
