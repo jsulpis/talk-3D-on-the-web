@@ -27,10 +27,6 @@ onMounted(() => {
   statsMs.showPanel(1);
   statsContainer.appendChild(statsMs.dom);
 
-  const statsMemory = new Stats();
-  statsMemory.showPanel(2);
-  statsContainer.appendChild(statsMemory.dom);
-
   document.getElementById("three-perf").appendChild(statsContainer);
 
   // Base
@@ -81,7 +77,7 @@ onMounted(() => {
 
       mixer
         .clipAction(model.animations[0], modelCopy)
-        .startAt(i / 10)
+        .startAt(i / 100)
         .play();
 
       scene.add(modelCopy);
@@ -93,14 +89,12 @@ onMounted(() => {
   (function tick() {
     statsMs.begin();
     statsFps.begin();
-    statsMemory.begin();
 
     mixer && mixer.update(clock.getDelta());
     renderer.render(scene, camera);
 
     statsMs.end();
     statsFps.end();
-    statsMemory.end();
     requestAnimationFrame(tick);
   })();
 });
