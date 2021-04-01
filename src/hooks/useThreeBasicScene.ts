@@ -23,6 +23,7 @@ export default function useThreeBasicScene(
   const camera = new THREE.PerspectiveCamera(33, sizes.width / sizes.height);
   scene.add(camera);
   const controls = new OrbitControls(camera, canvas);
+  controls.maxPolarAngle = Math.PI / 2;
 
   // Renderer
   const renderer = new THREE.WebGLRenderer({

@@ -11,7 +11,7 @@ import { onMounted } from "vue";
 import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 import { SkeletonUtils } from "three/examples/jsm/utils/SkeletonUtils";
-import useThreeBasicScene from "../../../hooks/useThreeBasicScene";
+import useThreeComplexScene from "../../../hooks/useThreeComplexScene";
 import Stats from "stats.js";
 
 onMounted(() => {
@@ -31,31 +31,12 @@ onMounted(() => {
 
   // Base
   const canvas = document.querySelector<HTMLCanvasElement>("canvas#threePerf");
-  const { scene, camera, renderer, controls } = useThreeBasicScene(canvas, 0);
 
-  camera.setFocalLength(30);
+  const { scene, camera, renderer, controls } = useThreeComplexScene(canvas);
+
   camera.position.set(500, 100, 500);
   controls.target.set(750, 80, 750);
   controls.update();
-  renderer.setClearAlpha(0);
-
-  // Lights
-  const hemisphereLight = new THREE.HemisphereLight("white", "#0c1a2a", 2);
-  hemisphereLight.position.set(0, 30, 0);
-  scene.add(hemisphereLight);
-
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-  directionalLight.position.set(-100, 400, -40);
-  scene.add(directionalLight);
-
-  // Ground
-  const ground = new THREE.Mesh(
-    new THREE.PlaneGeometry(400, 400),
-    new THREE.ShadowMaterial({ opacity: 0.4 })
-  );
-  ground.rotation.x = -Math.PI / 2;
-  ground.receiveShadow = true;
-  scene.add(ground);
 
   // Model
   let mixer: THREE.AnimationMixer;
