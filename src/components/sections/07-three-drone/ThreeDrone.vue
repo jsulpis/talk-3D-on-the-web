@@ -1,7 +1,7 @@
 <template>
   <section>
     <section>
-      <div class="container" id="three-drone">
+      <div class="container bg-gradient">
         <input type="color" id="droneColor" name="droneColor" value="#ffffff" />
         <canvas id="threeDrone"></canvas>
         <a
@@ -87,10 +87,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-#three-drone {
-  background: linear-gradient(#25446b, #0c1a2a);
-}
-
 input#droneColor {
   position: fixed;
   top: 5rem;

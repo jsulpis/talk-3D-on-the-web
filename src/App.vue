@@ -10,6 +10,7 @@
       <ThreeZenikanard />
       <ThreeDrone />
       <ThreePerf />
+      <VideoJump />
     </div>
   </div>
 </template>
@@ -24,6 +25,7 @@ import ThreeCube from "./components/sections/05-three-cube/ThreeCube.vue";
 import ThreeZenikanard from "./components/sections/06-three-zenikanard/ThreeZenikanard.vue";
 import ThreeDrone from "./components/sections/07-three-drone/ThreeDrone.vue";
 import ThreePerf from "./components/sections/08-three-perf/ThreePerf.vue";
+import VideoJump from "./components/sections/09-video-jump/VideoJump.vue";
 </script>
 
 <style>
@@ -36,7 +38,8 @@ section {
   background-color: #252525;
 }
 
-body.reveal-viewport {
+body.reveal-viewport,
+.bg-gradient {
   background: linear-gradient(#25446b, #0c1a2a);
 }
 

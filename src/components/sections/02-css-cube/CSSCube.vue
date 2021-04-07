@@ -2,7 +2,7 @@
   <section id="css-cube">
     <!-- The tabindex allows to focus on the section element. Click anywhere on the page, then press G or D -->
     <section tabindex="0" @keyup.g="toggleGui()" @keyup.d="destroyGui()">
-      <div class="container cube-container">
+      <div class="container cube-container bg-gradient">
         <div class="cube">
           <div class="face face-front"></div>
           <div class="face face-back"></div>
@@ -76,7 +76,6 @@ gui
   --color-medium: #2e5270;
   --color-dark: #162939;
 
-  background: linear-gradient(#25446b, #0c1a2a);
   perspective: 1000px;
   position: relative;
 }

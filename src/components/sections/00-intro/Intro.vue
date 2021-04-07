@@ -19,7 +19,7 @@ onMounted(() => {
   controls.update();
 
   const gltfLoader = new GLTFLoader();
-  gltfLoader.load("/intro.glb", (glb) => {
+  gltfLoader.load("/models/intro.glb", (glb) => {
     scene.add(glb.scene);
   });
 

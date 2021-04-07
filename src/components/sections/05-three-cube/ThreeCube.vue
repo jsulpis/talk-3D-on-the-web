@@ -1,7 +1,7 @@
 <template>
   <section id="three-cube">
     <section>
-      <div class="container three-cube-container">
+      <div class="container three-cube-container bg-gradient">
         <h1>Three.js</h1>
         <h3>à la rescousse</h3>
         <p class="fragment">(pour de vrai cette fois)</p>
@@ -46,7 +46,6 @@ onMounted(() => {
 #three-cube {
   .three-cube-container {
     flex-direction: column;
-    background: linear-gradient(#25446b, #0c1a2a);
   }
 
   #threeCube {

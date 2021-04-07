@@ -1,7 +1,7 @@
 <template>
   <section id="webgl-triangle">
     <section>
-      <div class="container triangle-container">
+      <div class="container triangle-container bg-gradient">
         <h1>WebGL</h1>
         <h3>à la rescousse</h3>
         <p class="fragment">(ou presque)</p>
@@ -84,7 +84,6 @@ onMounted(() => {
 #webgl-triangle {
   .triangle-container {
     flex-direction: column;
-    background: linear-gradient(#25446b, #0c1a2a);
   }
 
   #webglTriangle {

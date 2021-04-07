@@ -1,7 +1,7 @@
 <template>
   <section>
     <section>
-      <div class="container" id="three-zenikanard">
+      <div class="container bg-gradient">
         <canvas id="threeZenikanard"></canvas>
       </div>
     </section>
@@ -73,9 +73,3 @@ onMounted(() => {
   })();
 });
 </script>
-
-<style scoped>
-#three-zenikanard {
-  background: linear-gradient(#25446b, #0c1a2a);
-}
-</style>

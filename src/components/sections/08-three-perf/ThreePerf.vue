@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="container" id="three-perf">
+    <div class="container bg-gradient" id="three-perf">
       <canvas id="threePerf"></canvas>
     </div>
   </section>
@@ -82,10 +82,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-#three-perf {
-  background: linear-gradient(#25446b, #0c1a2a);
-}
-
 .stats-container {
   position: fixed;
   top: 20px;
