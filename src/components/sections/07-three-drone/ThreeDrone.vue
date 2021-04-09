@@ -8,7 +8,7 @@
           class="credits"
           href="https://sketchfab.com/3d-models/s9-mini-drone-cf3ed83c1b87486d90435f54c074e16e"
         >
-          Model by BlueMesh
+          Model: S9 Mini Drone by BlueMesh
         </a>
       </div>
     </section>
