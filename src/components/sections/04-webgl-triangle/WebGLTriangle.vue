@@ -3,8 +3,6 @@
     <section>
       <div class="container triangle-container bg-gradient">
         <h1>WebGL</h1>
-        <h3>à la rescousse</h3>
-        <p class="fragment">(ou presque)</p>
         <canvas id="webglTriangle" width="400" height="400"></canvas>
       </div>
     </section>
@@ -87,14 +85,11 @@ onMounted(() => {
   }
 
   #webglTriangle {
-    margin-top: 4rem;
+    margin-top: 10rem;
   }
 
-  h1,
-  h3,
-  p {
+  h1 {
     text-transform: initial;
-    margin: 0;
   }
 }
 </style>

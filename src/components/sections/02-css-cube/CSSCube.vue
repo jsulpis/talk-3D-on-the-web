@@ -90,11 +90,6 @@ gui
   box-shadow: 120px 180px 70px 20px #00000032;
 }
 
-.cube:hover {
-  transform: rotateX(70deg) rotateZ(30deg); /* will be broken after changing the transform property using the GUI */
-  box-shadow: 170px 280px 80px 20px #00000025;
-}
-
 .face {
   position: absolute;
   width: 100%;

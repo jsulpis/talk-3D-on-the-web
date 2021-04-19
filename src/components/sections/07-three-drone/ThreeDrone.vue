@@ -15,9 +15,6 @@
     <section>
       <ThreeDroneCodeAnimation />
     </section>
-    <section>
-      <ThreeDroneCodeColor />
-    </section>
   </section>
 </template>
 
@@ -28,7 +25,6 @@ import useThreeComplexScene from "../../../hooks/useThreeComplexScene";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Mesh, MeshStandardMaterial } from "three";
 import ThreeDroneCodeAnimation from "./ThreeDroneCodeAnimation.vue";
-import ThreeDroneCodeColor from "./ThreeDroneCodeColor.vue";
 
 onMounted(() => {
   const canvas = document.querySelector<HTMLCanvasElement>("canvas#threeDrone");

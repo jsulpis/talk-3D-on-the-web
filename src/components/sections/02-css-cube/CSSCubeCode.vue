@@ -25,10 +25,6 @@
   transform: rotateX(70deg) rotateZ(30deg) translateZ(-100px);
 }
 
-.cube:hover {
-  transform: rotateX(70deg) rotateZ(30deg);
-}
-
 .face {
   position: absolute;
   width: 100%;

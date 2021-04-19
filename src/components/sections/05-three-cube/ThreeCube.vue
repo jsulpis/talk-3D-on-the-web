@@ -4,7 +4,6 @@
       <div class="container three-cube-container bg-gradient">
         <h1>Three.js</h1>
         <h3>à la rescousse</h3>
-        <p class="fragment">(pour de vrai cette fois)</p>
         <canvas id="threeCube"></canvas>
       </div>
     </section>
@@ -53,8 +52,7 @@ onMounted(() => {
   }
 
   h1,
-  h3,
-  p {
+  h3 {
     text-transform: initial;
     margin: 0;
   }
