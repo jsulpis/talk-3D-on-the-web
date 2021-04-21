@@ -11,7 +11,7 @@
         <div class="parallax__group">
           <div class="parallax__layer parallax__layer--deep hero"></div>
           <div class="parallax__layer parallax__layer--back">
-            <h3 class="title">3D Website Demo</h3>
+            <h3 class="title">Mon super site 3D</h3>
           </div>
         </div>
 
@@ -21,7 +21,7 @@
               <label>
                 <input type="checkbox" id="depth" />
                 <div class="card">
-                  <p>Depth</p>
+                  <p>Profondeur</p>
                   <pre>
           <code class="stylesheet">.card {
   transform: none;
@@ -196,6 +196,7 @@ onMounted(() => {
 
 .title {
   text-align: center;
+  text-transform: initial;
   position: absolute;
   left: 50%;
   top: 30%;
