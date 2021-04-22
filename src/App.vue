@@ -12,6 +12,7 @@
       <!-- <ThreePerf /> -->
       <VideoJump />
       <VideoPorsche />
+      <Outro />
     </div>
   </div>
 </template>
@@ -28,6 +29,7 @@ import ThreeDrone from "./components/sections/07-three-drone/ThreeDrone.vue";
 // import ThreePerf from "./components/sections/08-three-perf/ThreePerf.vue";
 import VideoJump from "./components/sections/09-video-jump/VideoJump.vue";
 import VideoPorsche from "./components/sections/10-video-porsche/VideoPorsche.vue";
+import Outro from "./components/sections/11-outro/Outro.vue";
 </script>
 
 <style>
