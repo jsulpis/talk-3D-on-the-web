@@ -1,7 +1,8 @@
 <template>
   <section>
-    <section class="bg-gradient">
-      <video autoplay data-autoplay loop>
+    <!-- The tabindex allows to focus on the section element. Click anywhere on the page, then press G  -->
+    <section tabindex="0" @keyup.g="playVideo()" class="bg-gradient">
+      <video id="video-zenikanard" loop>
         <source src="zenikanard-jump.webm" type="video/webm" />
       </video>
     </section>
@@ -11,8 +12,22 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { onMounted } from "@vue/runtime-core";
 import VideoJumpCode from "./VideoJumpCode.vue";
+
+let video: HTMLVideoElement;
+
+onMounted(() => {
+  video = document.querySelector("#video-zenikanard");
+  // Change the frame because the first one is blurry
+  video.currentTime = 0.362735;
+});
+
+function playVideo() {
+  video.currentTime = 0;
+  video.play();
+}
 </script>
 
 <style scoped>

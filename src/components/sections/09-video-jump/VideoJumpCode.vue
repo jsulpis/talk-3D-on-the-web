@@ -3,7 +3,7 @@
     <!-- prettier-ignore -->
     <CodeBlock lang="html">
       {{ `
-<video autoplay loop>
+<video loop>
   <source src="zenikanard-jump.webm" type="video/webm" />
 </video>
 ` }}
