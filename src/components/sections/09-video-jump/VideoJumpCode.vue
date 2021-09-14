@@ -10,7 +10,3 @@
     </CodeBlock>
   </div>
 </template>
-
-<script setup>
-import CodeBlock from "../../CodeBlock.vue";
-</script>

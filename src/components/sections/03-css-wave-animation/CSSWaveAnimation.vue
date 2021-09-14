@@ -24,7 +24,6 @@
 <script setup>
 import gsap from "gsap";
 import { onMounted } from "vue";
-import CSSWaveAnimationCode from "./CSSWaveAnimationCode.vue";
 import Reveal from "reveal.js";
 
 onMounted(() => {

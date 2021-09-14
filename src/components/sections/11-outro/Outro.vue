@@ -18,12 +18,6 @@
   </section>
 </template>
 
-<script setup>
-import IconTwitter from "./IconTwitter.vue";
-import IconGithub from "./IconGithub.vue";
-import IconCodepen from "./IconCodepen.vue";
-</script>
-
 <style lang="scss">
 #outro {
   .container {

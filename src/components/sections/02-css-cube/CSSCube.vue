@@ -14,14 +14,13 @@
       </div>
     </section>
     <section>
-      <CssCubeCode />
+      <CSSCubeCode />
     </section>
   </section>
 </template>
 
 <script setup>
 import { onMounted } from "vue";
-import CssCubeCode from "../../sections/02-css-cube/CSSCubeCode.vue";
 import useGui from "../../../hooks/useGui";
 
 const { gui, toggleGui, destroyGui } = useGui();

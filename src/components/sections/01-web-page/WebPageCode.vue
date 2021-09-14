@@ -60,10 +60,6 @@ section {
   </div>
 </template>
 
-<script setup>
-import CodeBlock from "../../CodeBlock.vue";
-</script>
-
 <style scoped>
 .container {
   justify-content: space-evenly;

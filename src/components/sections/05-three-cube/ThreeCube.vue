@@ -16,7 +16,6 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
 import * as THREE from "three";
-import ThreeCubeCode from "./ThreeCubeCode.vue";
 
 onMounted(() => {
   // Scene

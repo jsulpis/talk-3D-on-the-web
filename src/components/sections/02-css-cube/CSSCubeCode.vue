@@ -44,10 +44,6 @@
   </div>
 </template>
 
-<script setup>
-import CodeBlock from "../../CodeBlock.vue";
-</script>
-
 <style scoped>
 .container {
   padding: 3rem;

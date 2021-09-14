@@ -7,14 +7,13 @@
       </div>
     </section>
     <section>
-      <WebGlTriangleCode />
+      <WebGLTriangleCode />
     </section>
   </section>
 </template>
 
 <script setup>
-import { onMounted } from "@vue/runtime-core";
-import WebGlTriangleCode from "./WebGLTriangleCode.vue";
+import { onMounted } from "vue";
 
 onMounted(() => {
   const webglCanvas = document.getElementById("webglTriangle");

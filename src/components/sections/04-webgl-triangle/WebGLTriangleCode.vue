@@ -64,7 +64,3 @@ gl.drawArrays(gl.TRIANGLES, 0, vertexBuffer.numItems);`
     </CodeBlock>
   </div>
 </template>
-
-<script setup>
-import CodeBlock from "../../CodeBlock.vue";
-</script>

@@ -54,8 +54,7 @@
 
 <script setup>
 import { onMounted } from "vue";
-import RevealHighlight from "reveal.js/plugin/highlight/highlight.js";
-import WebPageCode from "../../sections/01-web-page/WebPageCode.vue";
+import RevealHighlight from "reveal.js/plugin/highlight/highlight";
 
 onMounted(() => {
   const mainTag = document.querySelector("#web-page .main");

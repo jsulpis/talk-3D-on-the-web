@@ -40,8 +40,7 @@ video.onmousedown = (event) => {
 </template>
 
 <script setup lang="ts">
-import CodeBlock from "../../CodeBlock.vue";
-import { onMounted } from "@vue/runtime-core";
+import { onMounted } from "vue";
 
 onMounted(() => {
   const video = document.querySelector<HTMLVideoElement>("video#video-porsche");

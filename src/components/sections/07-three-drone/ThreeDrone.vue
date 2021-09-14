@@ -24,7 +24,6 @@ import * as THREE from "three";
 import useThreeComplexScene from "../../../hooks/useThreeComplexScene";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Mesh, MeshStandardMaterial } from "three";
-import ThreeDroneCodeAnimation from "./ThreeDroneCodeAnimation.vue";
 
 onMounted(() => {
   const canvas = document.querySelector<HTMLCanvasElement>("canvas#threeDrone");
@@ -47,8 +46,9 @@ onMounted(() => {
     meshes.forEach((mesh) => (mesh.children[0].castShadow = true));
 
     // Reference for color picker
-    droneShellMaterial = (meshes.find((mesh) => mesh.name === "Cube")
-      .children[1] as Mesh).material as MeshStandardMaterial;
+    droneShellMaterial = (
+      meshes.find((mesh) => mesh.name === "Cube").children[1] as Mesh
+    ).material as MeshStandardMaterial;
 
     // Reference for animation
     propellers = meshes.filter((mesh) => PROPELLERS_NAMES.includes(mesh.name));

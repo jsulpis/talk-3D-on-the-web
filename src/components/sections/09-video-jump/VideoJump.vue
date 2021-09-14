@@ -13,8 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "@vue/runtime-core";
-import VideoJumpCode from "./VideoJumpCode.vue";
+import { onMounted } from "vue";
 
 let video: HTMLVideoElement;
 
