@@ -19,9 +19,9 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted } from "vue";
-import useGui from "../../../hooks/useGui";
+import useGui from "@/composables/useGui";
 
 const { gui, toggleGui, destroyGui } = useGui();
 

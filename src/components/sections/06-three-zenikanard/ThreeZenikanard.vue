@@ -18,7 +18,7 @@
 import { onMounted } from "vue";
 import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
-import useThreeComplexScene from "../../../hooks/useThreeComplexScene";
+import useThreeComplexScene from "@/composables/useThreeComplexScene";
 
 onMounted(() => {
   const canvas = document.querySelector<HTMLCanvasElement>(

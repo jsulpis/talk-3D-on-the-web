@@ -8,7 +8,7 @@
 import { onMounted } from "vue";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import useThreeBasicScene from "../../../hooks/useThreeBasicScene";
+import useThreeBasicScene from "@/composables/useThreeBasicScene";
 
 onMounted(() => {
   const canvas = document.querySelector<HTMLCanvasElement>("canvas#webglIntro");

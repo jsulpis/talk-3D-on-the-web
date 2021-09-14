@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
 import * as THREE from "three";
-import useThreeComplexScene from "../../../hooks/useThreeComplexScene";
+import useThreeComplexScene from "@/composables/useThreeComplexScene";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Mesh, MeshStandardMaterial } from "three";
 

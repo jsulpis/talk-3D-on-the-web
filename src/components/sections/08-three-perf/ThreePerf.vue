@@ -11,7 +11,7 @@ import { onMounted } from "vue";
 import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 import { SkeletonUtils } from "three/examples/jsm/utils/SkeletonUtils";
-import useThreeComplexScene from "../../../hooks/useThreeComplexScene";
+import useThreeComplexScene from "@/composables/useThreeComplexScene";
 import Stats from "stats.js";
 
 onMounted(() => {
