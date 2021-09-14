@@ -114,6 +114,7 @@ onMounted(() => {
 
   &__layer {
     position: absolute;
+    transition: transform 300ms;
     top: 0;
     left: 0;
     right: 0;
