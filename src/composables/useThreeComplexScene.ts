@@ -1,8 +1,12 @@
 import * as THREE from "three";
 import useThreeBasicScene from "./useThreeBasicScene";
 
-export default function useThreeComplexScene(canvas: HTMLCanvasElement) {
-  const { scene, camera, renderer, controls, tick } = useThreeBasicScene(
+export default function useThreeComplexScene(
+  slideId: string,
+  canvas: HTMLCanvasElement
+) {
+  const { scene, camera, renderer, controls, onEachFrame } = useThreeBasicScene(
+    slideId,
     canvas,
     0
   );
@@ -38,5 +42,5 @@ export default function useThreeComplexScene(canvas: HTMLCanvasElement) {
   ground.receiveShadow = true;
   scene.add(ground);
 
-  return { scene, camera, renderer, controls, tick };
+  return { scene, camera, renderer, controls, onEachFrame };
 }

@@ -1,9 +1,9 @@
 <template>
   <section>
-    <section>
+    <section id="drone">
       <div class="container bg-gradient">
         <input type="color" id="droneColor" name="droneColor" value="#ffffff" />
-        <canvas id="threeDrone"></canvas>
+        <canvas ref="droneCanvas"></canvas>
         <a
           class="credits"
           href="https://sketchfab.com/3d-models/s9-mini-drone-cf3ed83c1b87486d90435f54c074e16e"
@@ -19,20 +19,23 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import * as THREE from "three";
 import useThreeComplexScene from "@/composables/useThreeComplexScene";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { Mesh, MeshStandardMaterial } from "three";
+
+const droneCanvas = ref(null);
 
 onMounted(() => {
-  const canvas = document.querySelector<HTMLCanvasElement>("canvas#threeDrone");
-  const { scene, camera, renderer } = useThreeComplexScene(canvas);
+  const { scene, renderer, camera, onEachFrame } = useThreeComplexScene(
+    "drone",
+    droneCanvas.value
+  );
 
   // Model
   const gltfLoader = new GLTFLoader();
   let drone: THREE.Group;
-  let droneShellMaterial: MeshStandardMaterial;
+  let droneShellMaterial: THREE.MeshStandardMaterial;
   let propellers: THREE.Object3D[] = [];
   const PROPELLERS_NAMES = ["Circle002", "Circle003", "Circle004", "Circle005"];
 
@@ -47,8 +50,8 @@ onMounted(() => {
 
     // Reference for color picker
     droneShellMaterial = (
-      meshes.find((mesh) => mesh.name === "Cube").children[1] as Mesh
-    ).material as MeshStandardMaterial;
+      meshes.find((mesh) => mesh.name === "Cube").children[1] as THREE.Mesh
+    ).material as THREE.MeshStandardMaterial;
 
     // Reference for animation
     propellers = meshes.filter((mesh) => PROPELLERS_NAMES.includes(mesh.name));
@@ -61,24 +64,23 @@ onMounted(() => {
   // Drone color
   document
     .getElementById("droneColor")
-    .addEventListener("input", (e: InputEvent) => {
-      const colorHexString = (e.target as HTMLInputElement).value; // ex: "#00000f"
+    .addEventListener("input", ({ target }) => {
+      const colorHexString = (target as HTMLInputElement).value; // ex: "#00000f"
       const colorHexNumber = parseInt(colorHexString.slice(1), 16); // ex: 15
       droneShellMaterial.color.setHex(colorHexNumber);
     });
 
   // Animation
   const clock = new THREE.Clock();
-  (function tick() {
+
+  onEachFrame(() => {
     if (drone) {
       drone.rotation.y -= 0.01;
       drone.position.y = 30 + 3 * Math.cos(2 * clock.getElapsedTime());
     }
     propellers.forEach((prop) => (prop.rotation.z -= 0.3));
     renderer.render(scene, camera);
-
-    requestAnimationFrame(tick);
-  })();
+  });
 });
 </script>
 

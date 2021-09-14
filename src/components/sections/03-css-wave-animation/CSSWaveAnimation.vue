@@ -21,10 +21,10 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import gsap from "gsap";
 import { onMounted } from "vue";
-import Reveal from "reveal.js";
+import useCurrentSlide from "@/composables/useCurrentSlide";
 
 onMounted(() => {
   const select = (e) => document.querySelector(e);
@@ -46,18 +46,17 @@ onMounted(() => {
     transformOrigin: "right center",
   });
 
-  let gsapAnimation;
   // Play the animation when entering the slide, pause when leaving
-  Reveal.addEventListener("slidechanged", function (event) {
-    if (event.currentSlide.id === "css-wave-animation") {
-      if (gsapAnimation) gsapAnimation.play();
-      else gsapAnimation = initGsapAnimation();
-    } else if (
-      event.previousSlide &&
-      event.previousSlide.id === "css-wave-animation"
-    ) {
-      gsapAnimation.pause();
-    }
+  let gsapAnimation;
+  const { onSlideEnter, onSlideLeave } = useCurrentSlide("css-wave-animation");
+
+  onSlideEnter(() => {
+    if (gsapAnimation) gsapAnimation.play();
+    else gsapAnimation = initGsapAnimation();
+  });
+
+  onSlideLeave(() => {
+    gsapAnimation.pause();
   });
 
   const initGsapAnimation = () =>

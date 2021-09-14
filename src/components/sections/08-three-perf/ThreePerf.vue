@@ -1,18 +1,20 @@
 <template>
-  <section>
+  <section id="perf">
     <div class="container bg-gradient" id="three-perf">
-      <canvas id="threePerf"></canvas>
+      <canvas ref="perfCanvas"></canvas>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
-import { SkeletonUtils } from "three/examples/jsm/utils/SkeletonUtils";
+import { clone } from "three/examples/jsm/utils/SkeletonUtils";
 import useThreeComplexScene from "@/composables/useThreeComplexScene";
 import Stats from "stats.js";
+
+const perfCanvas = ref(null);
 
 onMounted(() => {
   // Stats
@@ -30,9 +32,8 @@ onMounted(() => {
   document.getElementById("three-perf").appendChild(statsContainer);
 
   // Base
-  const canvas = document.querySelector<HTMLCanvasElement>("canvas#threePerf");
-
-  const { scene, camera, renderer, controls } = useThreeComplexScene(canvas);
+  const { scene, renderer, camera, controls, onEachFrame } =
+    useThreeComplexScene("perf", perfCanvas.value);
 
   camera.position.set(500, 100, 500);
   controls.target.set(750, 80, 750);
@@ -51,7 +52,7 @@ onMounted(() => {
 
     const SQUARE_SIZE = 500;
     for (let i = 0; i < 100; i++) {
-      const modelCopy = SkeletonUtils.clone(model);
+      const modelCopy = clone(model);
       modelCopy.rotation.y = Math.random() * 2 * Math.PI;
       modelCopy.position.x = -SQUARE_SIZE + Math.random() * 2 * SQUARE_SIZE;
       modelCopy.position.z = -SQUARE_SIZE + Math.random() * 2 * SQUARE_SIZE;
@@ -67,7 +68,8 @@ onMounted(() => {
 
   // Animation
   const clock = new THREE.Clock();
-  (function tick() {
+
+  onEachFrame(() => {
     statsMs.begin();
     statsFps.begin();
 
@@ -76,8 +78,7 @@ onMounted(() => {
 
     statsMs.end();
     statsFps.end();
-    requestAnimationFrame(tick);
-  })();
+  });
 });
 </script>
 

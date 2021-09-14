@@ -1,18 +1,22 @@
 <template>
-  <section>
-    <canvas id="webglIntro"></canvas>
+  <section id="intro">
+    <canvas ref="introCanvas"></canvas>
   </section>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import useThreeBasicScene from "@/composables/useThreeBasicScene";
 
+const introCanvas = ref(null);
+
 onMounted(() => {
-  const canvas = document.querySelector<HTMLCanvasElement>("canvas#webglIntro");
-  const { scene, camera, controls, tick } = useThreeBasicScene(canvas);
+  const { scene, renderer, camera, controls, onEachFrame } = useThreeBasicScene(
+    "intro",
+    introCanvas.value
+  );
 
   camera.position.set(0, 1.2, 8);
   controls.target = new THREE.Vector3(0, 1.4, 0);
@@ -23,6 +27,6 @@ onMounted(() => {
     scene.add(glb.scene);
   });
 
-  tick();
+  onEachFrame(() => renderer.render(scene, camera));
 });
 </script>

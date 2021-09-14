@@ -1,8 +1,8 @@
 <template>
   <section>
-    <section>
+    <section id="zenikanard">
       <div class="container bg-gradient">
-        <canvas id="threeZenikanard"></canvas>
+        <canvas ref="zenikanardCanvas"></canvas>
       </div>
     </section>
     <section>
@@ -15,16 +15,16 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 import useThreeComplexScene from "@/composables/useThreeComplexScene";
 
+const zenikanardCanvas = ref(null);
+
 onMounted(() => {
-  const canvas = document.querySelector<HTMLCanvasElement>(
-    "canvas#threeZenikanard"
-  );
-  const { scene, camera, renderer, controls } = useThreeComplexScene(canvas);
+  const { scene, renderer, camera, controls, onEachFrame } =
+    useThreeComplexScene("zenikanard", zenikanardCanvas.value);
   controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
   controls.dampingFactor = 0.2;
 
@@ -62,12 +62,11 @@ onMounted(() => {
 
   // Animation
   const clock = new THREE.Clock();
-  (function tick() {
+
+  onEachFrame(() => {
     mixer && mixer.update(clock.getDelta());
     controls.update();
     renderer.render(scene, camera);
-
-    requestAnimationFrame(tick);
-  })();
+  });
 });
 </script>
