@@ -25,9 +25,10 @@ onMounted(() => {
   statsFps.showPanel(0);
   statsContainer.appendChild(statsFps.dom);
 
-  const statsMs = new Stats();
-  statsMs.showPanel(1);
-  statsContainer.appendChild(statsMs.dom);
+  // The ms stats look irrelevant because the value is still only a few milliseconds even when the framerate drops
+  // const statsMs = new Stats();
+  // statsMs.showPanel(1);
+  // statsContainer.appendChild(statsMs.dom);
 
   document.getElementById("three-perf").appendChild(statsContainer);
 
@@ -70,13 +71,13 @@ onMounted(() => {
   const clock = new THREE.Clock();
 
   onEachFrame(() => {
-    statsMs.begin();
+    // statsMs.begin();
     statsFps.begin();
 
     mixer && mixer.update(clock.getDelta());
     renderer.render(scene, camera);
 
-    statsMs.end();
+    // statsMs.end();
     statsFps.end();
   });
 });

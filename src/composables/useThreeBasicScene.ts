@@ -74,7 +74,7 @@ export default function useThreeBasicScene(
 
   function loop() {
     tick();
-    console.log("rendering", slideId); // check that only the current slide is rendered
+    // console.log("rendering", slideId); // check that only the current slide is rendered
     if (isCurrentSlide.value) requestAnimationFrame(loop);
   }
 
