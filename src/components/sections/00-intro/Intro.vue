@@ -3,7 +3,7 @@
     <canvas ref="introCanvas"></canvas>
     <div class="explainations">
       <strong>"3D on the web"</strong>
-      <p>Slides for a talk given at LyonJS, France.</p>
+      <p>Slides for a talk given at the LyonJS meet-up (France).</p>
       <p>
         This presentation is optimised for a full screen 16/10 laptop or desktop
         display.
