@@ -1,7 +1,8 @@
 import Reveal from "reveal.js";
 
 /**
- * Callbacks to pause the animations when leaving the slides
+ * Callbacks used to activate the animations and event listeners
+ * only on the current slide
  */
 export default function useCurrentSlide(slideId: string) {
   let onEnterCallback = () => {};

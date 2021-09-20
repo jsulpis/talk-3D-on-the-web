@@ -4,8 +4,13 @@
       <div class="container bg-gradient">
         <input type="color" id="droneColor" name="droneColor" value="#ffffff" />
         <canvas ref="droneCanvas"></canvas>
+      </div>
+      <div class="explainations">
+        <p>
+          Use the color picker on the top right corner to change the color of
+          the drone
+        </p>
         <a
-          class="credits"
           href="https://sketchfab.com/3d-models/s9-mini-drone-cf3ed83c1b87486d90435f54c074e16e"
         >
           Model: S9 Mini Drone by BlueMesh

@@ -11,7 +11,10 @@
         <div class="parallax__group">
           <div class="parallax__layer parallax__layer--deep hero"></div>
           <div class="parallax__layer parallax__layer--back">
-            <h3 class="title">Mon super site 3D</h3>
+            <h3 class="title">My awesome 3D website</h3>
+          </div>
+          <div class="explainations">
+            <p>Scroll down</p>
           </div>
         </div>
 
@@ -21,7 +24,7 @@
               <label>
                 <input type="checkbox" id="depth" />
                 <div class="card">
-                  <p>Profondeur</p>
+                  <p>Depth</p>
                   <pre>
           <code class="stylesheet">.card {
   transform: none;
@@ -41,6 +44,13 @@
   </pre>
                 </div>
               </label>
+            </div>
+            <div class="explainations light">
+              <p>
+                Check the two boxes to see the effect of the perspective and the
+                parallax on the header
+              </p>
+              <p>Then check the debug option to switch the view</p>
             </div>
           </div>
         </div>

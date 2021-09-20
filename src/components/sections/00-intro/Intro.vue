@@ -1,6 +1,21 @@
 <template>
   <section id="intro">
     <canvas ref="introCanvas"></canvas>
+    <div class="explainations">
+      <strong>"3D on the web"</strong>
+      <p>Slides for a talk given at LyonJS, France.</p>
+      <p>
+        This presentation is optimised for a full screen 16/10 laptop or desktop
+        display.
+      </p>
+      <br />
+      <p>You can move in the 3D space:</p>
+      <ul>
+        <li>Mouse wheel to zoom in/out</li>
+        <li>Left click to rotate</li>
+        <li>Right click to move</li>
+      </ul>
+    </div>
   </section>
 </template>
 

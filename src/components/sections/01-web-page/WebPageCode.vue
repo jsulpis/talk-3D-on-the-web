@@ -9,7 +9,7 @@
   <section>
     <div class="layer layer--deep hero"></div>
     <div class="layer layer--back">
-      <h1>3D Website Demo</h1>
+      <h1>My awesome 3D website</h1>
     </div>
   </section>
 

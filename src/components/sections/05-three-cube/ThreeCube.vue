@@ -3,7 +3,7 @@
     <section>
       <div class="container three-cube-container bg-gradient">
         <h1>Three.js</h1>
-        <h3>à la rescousse</h3>
+        <h3>to the rescue</h3>
         <canvas id="threeCube"></canvas>
       </div>
     </section>

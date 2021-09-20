@@ -4,6 +4,10 @@
       <div class="container bg-gradient">
         <canvas ref="zenikanardCanvas"></canvas>
       </div>
+      <div class="explainations">
+        <p>Press "Enter" to play or pause the animation</p>
+        <p>You can zoom out and move in the 3D space</p>
+      </div>
     </section>
     <section>
       <ThreeZenikanardCodeBase />
@@ -19,8 +23,11 @@ import { onMounted, ref } from "vue";
 import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 import useThreeComplexScene from "@/composables/useThreeComplexScene";
+import useCurrentSlide from "@/composables/useCurrentSlide";
 
 const zenikanardCanvas = ref(null);
+
+const { onSlideEnter, onSlideLeave } = useCurrentSlide("zenikanard");
 
 onMounted(() => {
   const { scene, renderer, camera, controls, onEachFrame } =
@@ -50,7 +57,10 @@ onMounted(() => {
     scene.add(model);
   });
 
-  document.addEventListener("keypress", function (e: KeyboardEvent) {
+  onSlideEnter(() => document.addEventListener("keypress", toggleAnimation));
+  onSlideLeave(() => document.removeEventListener("keypress", toggleAnimation));
+
+  function toggleAnimation(e: KeyboardEvent) {
     if (e.key === "Enter") {
       if (jumpAction.isRunning()) jumpAction.paused = true;
       else {
@@ -58,7 +68,7 @@ onMounted(() => {
         jumpAction.play();
       }
     }
-  });
+  }
 
   // Animation
   const clock = new THREE.Clock();

@@ -1,16 +1,22 @@
 <template>
-  <section id="css-cube">
-    <!-- The tabindex allows to focus on the section element. Click anywhere on the page, then press G or D -->
-    <section tabindex="0" @keyup.g="toggleGui()" @keyup.d="destroyGui()">
+  <section>
+    <section id="css-cube">
       <div class="container cube-container bg-gradient">
-        <div class="cube">
-          <div class="face face-front"></div>
+        <div ref="cube" class="cube">
+          <div ref="frontFace" class="face face-front"></div>
           <div class="face face-back"></div>
           <div class="face face-left"></div>
           <div class="face face-right"></div>
           <div class="face face-top"></div>
           <div class="face face-bottom"></div>
         </div>
+      </div>
+      <div class="explainations">
+        <p>Press "G" to show a panel with sliders</p>
+        <p>
+          Press "G" again to remove the panel before moving on to the next
+          slides
+        </p>
       </div>
     </section>
     <section>
@@ -20,10 +26,22 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { ref } from "vue";
 import useGui from "@/composables/useGui";
+import useCurrentSlide from "@/composables/useCurrentSlide";
 
-const { gui, toggleGui, destroyGui } = useGui();
+const { onSlideEnter, onSlideLeave } = useCurrentSlide("css-cube");
+const { gui, toggleGui: showGui, destroyGui } = useGui();
+
+onSlideEnter(() => document.addEventListener("keyup", toggleGui));
+onSlideLeave(() => document.removeEventListener("keyup", toggleGui));
+
+function toggleGui(e) {
+  if (e.key === "g") {
+    if (gui.closed) showGui();
+    else destroyGui();
+  }
+}
 
 const cubeTransform = {
   translateY: 0,
@@ -34,14 +52,11 @@ const frontFaceTransform = {
   rotateX: -90,
 };
 
-let cube, frontFace;
-onMounted(() => {
-  cube = document.querySelector("#css-cube .cube");
-  frontFace = document.querySelector("#css-cube .face-front");
-});
+let cube = ref(null),
+  frontFace = ref(null);
 
 const updateTransform = () => {
-  cube.style.transform = `rotateX(70deg) rotateZ(${
+  cube.value.style.transform = `rotateX(70deg) rotateZ(${
     30 + cubeTransform.rotateZ
   }deg) translate3d(0, ${cubeTransform.translateY}px, -100px)`;
 };
@@ -64,7 +79,7 @@ gui
   .max(-90)
   .step(1)
   .onChange(() => {
-    frontFace.style.transform = `rotateX(${frontFaceTransform.rotateX}deg)`;
+    frontFace.value.style.transform = `rotateX(${frontFaceTransform.rotateX}deg)`;
   });
 </script>
 

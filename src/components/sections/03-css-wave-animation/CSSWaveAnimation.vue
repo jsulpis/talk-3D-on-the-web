@@ -2,9 +2,9 @@
   <section>
     <section id="css-wave-animation">
       <div class="container wave-container">
-        <a class="credits" href="https://codepen.io/petebarr/pen/rNBwvyd"
-          >Codepen by Pete Barr</a
-        >
+        <a class="credits" href="https://codepen.io/petebarr/pen/rNBwvyd">
+          Codepen by Pete Barr
+        </a>
         <div class="grid">
           <div class="cube">
             <div class="face face--front"></div>

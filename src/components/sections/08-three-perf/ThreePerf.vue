@@ -3,6 +3,11 @@
     <div class="container bg-gradient" id="three-perf">
       <canvas ref="perfCanvas"></canvas>
     </div>
+    <div class="explainations">
+      <p>
+        Zoom out to reveal more ducks and see the evolution of the framerate
+      </p>
+    </div>
   </section>
 </template>
 

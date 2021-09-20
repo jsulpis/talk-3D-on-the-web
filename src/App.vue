@@ -17,7 +17,7 @@
   </div>
 </template>
 
-<style>
+<style lang="scss">
 #app,
 section {
   width: 100%;
@@ -39,12 +39,37 @@ body.reveal-viewport,
   height: 100%;
 }
 
-.reveal a.credits {
+.reveal a.credits,
+.explainations {
   position: fixed;
   bottom: 2rem;
   left: 2rem;
   color: white;
   font-size: 1rem;
+}
+
+.reveal a.credits {
+  text-decoration: underline;
+}
+
+.reveal .explainations {
+  text-align: left;
+
+  p {
+    margin: 0.125rem 0;
+  }
+
+  &.light p {
+    color: black;
+    font-weight: normal;
+    text-shadow: none;
+  }
+
+  a {
+    color: white;
+    text-decoration: underline;
+    text-align: left;
+  }
 }
 
 * {

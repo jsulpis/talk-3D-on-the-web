@@ -29,12 +29,15 @@ video.onmousedown = (event) => {
       <video id="video-porsche">
         <source src="porsche-turntable.webm" type="video/webm" />
       </video>
-      <a
-        class="credits"
-        href="https://sketchfab.com/3d-models/free-1975-porsche-911-930-turbo-8568d9d14a994b9cae59499f0dbed21e"
-      >
-        Model: 1975 Porsche 911 (930) Turbo by Karol Miklas
-      </a>
+
+      <div class="explainations">
+        <p>Click and drag on the car to rotate it</p>
+        <a
+          href="https://sketchfab.com/3d-models/free-1975-porsche-911-930-turbo-8568d9d14a994b9cae59499f0dbed21e"
+        >
+          Model: 1975 Porsche 911 (930) Turbo by Karol Miklas
+        </a>
+      </div>
     </div>
   </section>
 </template>
