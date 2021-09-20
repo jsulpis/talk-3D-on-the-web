@@ -44,7 +44,7 @@ onMounted(() => {
   let propellers: THREE.Object3D[] = [];
   const PROPELLERS_NAMES = ["Circle002", "Circle003", "Circle004", "Circle005"];
 
-  gltfLoader.load("/models/drone.gltf", (gltf) => {
+  gltfLoader.load("models/drone.gltf", (gltf) => {
     drone = gltf.scene;
     drone.scale.set(8, 8, 8);
 

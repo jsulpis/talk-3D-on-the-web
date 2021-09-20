@@ -78,6 +78,6 @@ body.reveal-viewport,
 
 /* dat.GUI control panel */
 .dg.ac {
-  z-index: 1;
+  z-index: 1 !important;
 }
 </style>

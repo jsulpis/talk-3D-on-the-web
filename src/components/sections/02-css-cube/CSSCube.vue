@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import useGui from "@/composables/useGui";
 import useCurrentSlide from "@/composables/useCurrentSlide";
 
@@ -52,35 +52,37 @@ const frontFaceTransform = {
   rotateX: -90,
 };
 
-let cube = ref(null),
-  frontFace = ref(null);
+const cube = ref(null);
+const frontFace = ref(null);
 
-const updateTransform = () => {
-  cube.value.style.transform = `rotateX(70deg) rotateZ(${
-    30 + cubeTransform.rotateZ
-  }deg) translate3d(0, ${cubeTransform.translateY}px, -100px)`;
-};
+onMounted(() => {
+  const updateTransform = () => {
+    cube.value.style.transform = `rotateX(70deg) rotateZ(${
+      30 + cubeTransform.rotateZ
+    }deg) translate3d(0, ${cubeTransform.translateY}px, -100px)`;
+  };
 
-gui
-  .add(cubeTransform, "translateY")
-  .min(-800)
-  .max(0)
-  .step(1)
-  .onChange(updateTransform);
-gui
-  .add(cubeTransform, "rotateZ")
-  .min(0)
-  .max(360)
-  .step(1)
-  .onChange(updateTransform);
-gui
-  .add(frontFaceTransform, "rotateX")
-  .min(-179)
-  .max(-90)
-  .step(1)
-  .onChange(() => {
-    frontFace.value.style.transform = `rotateX(${frontFaceTransform.rotateX}deg)`;
-  });
+  gui
+    .add(cubeTransform, "translateY")
+    .min(-800)
+    .max(0)
+    .step(1)
+    .onChange(updateTransform);
+  gui
+    .add(cubeTransform, "rotateZ")
+    .min(0)
+    .max(360)
+    .step(1)
+    .onChange(updateTransform);
+  gui
+    .add(frontFaceTransform, "rotateX")
+    .min(-179)
+    .max(-90)
+    .step(1)
+    .onChange(() => {
+      frontFace.value.style.transform = `rotateX(${frontFaceTransform.rotateX}deg)`;
+    });
+});
 </script>
 
 <style scoped>

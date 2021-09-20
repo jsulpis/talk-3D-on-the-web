@@ -38,7 +38,7 @@ onMounted(() => {
   // Model
   const fbxLoader = new FBXLoader();
   let mixer: THREE.AnimationMixer, jumpAction: THREE.AnimationAction;
-  fbxLoader.load("/models/zenikanard_LOD1.fbx", (model) => {
+  fbxLoader.load("models/zenikanard_LOD1.fbx", (model) => {
     model.scale.set(10, 10, 10);
     model.rotation.y = (3 * Math.PI) / 4;
     model.children[0].castShadow = true;

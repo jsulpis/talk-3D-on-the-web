@@ -2,7 +2,7 @@
   <section>
     <section id="video-zenikanard" class="bg-gradient">
       <video loop>
-        <source src="zenikanard-jump.webm" type="video/webm" />
+        <source src="/src/assets/zenikanard-jump.webm" type="video/webm" />
       </video>
       <div class="explainations">
         <p>Press "Enter" to play or pause the animation</p>
