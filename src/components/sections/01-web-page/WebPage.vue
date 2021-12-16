@@ -199,7 +199,7 @@ onMounted(() => {
 ------------------------------------- */
 
 .hero {
-  background-image: url("https://images.pexels.com/photos/358528/pexels-photo-358528.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-image: url("/src/assets/pexels-photo-background.jpeg");
   background-size: cover;
   background-position: center;
 }
