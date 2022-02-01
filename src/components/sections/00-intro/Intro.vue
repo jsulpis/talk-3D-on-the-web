@@ -3,9 +3,8 @@
     <canvas ref="introCanvas"></canvas>
     <div class="explainations">
       <strong>"3D on the web"</strong>
-      <p>Slides for a talk given at the LyonJS meet-up (France).</p>
       <p>
-        This presentation is optimised for a full screen 16/10 laptop or desktop
+        This presentation is optimised for a full screen 16/9 laptop or desktop
         display.
       </p>
       <br />
@@ -33,7 +32,7 @@ onMounted(() => {
     introCanvas.value
   );
 
-  camera.position.set(0, 1.2, 8);
+  camera.position.set(0, 1.2, 6.5);
   controls.target = new THREE.Vector3(0, 1.4, 0);
   controls.update();
 
