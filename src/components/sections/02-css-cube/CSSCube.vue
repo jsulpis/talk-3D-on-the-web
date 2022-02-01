@@ -12,11 +12,7 @@
         </div>
       </div>
       <div class="explainations">
-        <p>Press "G" to show a panel with sliders</p>
-        <p>
-          Press "G" again to remove the panel before moving on to the next
-          slides
-        </p>
+        <p>Press "G" to toggle the visibility of the sliders</p>
       </div>
     </section>
     <section>
@@ -26,22 +22,13 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import useGui from "@/composables/useGui";
-import useCurrentSlide from "@/composables/useCurrentSlide";
 
-const { onSlideEnter, onSlideLeave } = useCurrentSlide("css-cube");
-const { gui, toggleGui: showGui, destroyGui } = useGui();
+const { gui } = useGui("css-cube");
 
-onSlideEnter(() => document.addEventListener("keyup", toggleGui));
-onSlideLeave(() => document.removeEventListener("keyup", toggleGui));
-
-function toggleGui(e) {
-  if (e.key === "g") {
-    if (gui.closed) showGui();
-    else destroyGui();
-  }
-}
+const cube = ref(null);
+const frontFace = ref(null);
 
 const cubeTransform = {
   translateY: 0,
@@ -52,37 +39,32 @@ const frontFaceTransform = {
   rotateX: -90,
 };
 
-const cube = ref(null);
-const frontFace = ref(null);
+const updateTransform = () => {
+  cube.value.style.transform = `rotateX(70deg) rotateZ(${
+    30 + cubeTransform.rotateZ
+  }deg) translate3d(0, ${cubeTransform.translateY}px, -100px)`;
+};
 
-onMounted(() => {
-  const updateTransform = () => {
-    cube.value.style.transform = `rotateX(70deg) rotateZ(${
-      30 + cubeTransform.rotateZ
-    }deg) translate3d(0, ${cubeTransform.translateY}px, -100px)`;
-  };
-
-  gui
-    .add(cubeTransform, "translateY")
-    .min(-800)
-    .max(0)
-    .step(1)
-    .onChange(updateTransform);
-  gui
-    .add(cubeTransform, "rotateZ")
-    .min(0)
-    .max(360)
-    .step(1)
-    .onChange(updateTransform);
-  gui
-    .add(frontFaceTransform, "rotateX")
-    .min(-179)
-    .max(-90)
-    .step(1)
-    .onChange(() => {
-      frontFace.value.style.transform = `rotateX(${frontFaceTransform.rotateX}deg)`;
-    });
-});
+gui
+  .add(cubeTransform, "translateY")
+  .min(-800)
+  .max(0)
+  .step(1)
+  .onChange(updateTransform);
+gui
+  .add(cubeTransform, "rotateZ")
+  .min(0)
+  .max(360)
+  .step(1)
+  .onChange(updateTransform);
+gui
+  .add(frontFaceTransform, "rotateX")
+  .min(-179)
+  .max(-90)
+  .step(1)
+  .onChange(() => {
+    frontFace.value.style.transform = `rotateX(${frontFaceTransform.rotateX}deg)`;
+  });
 </script>
 
 <style scoped>

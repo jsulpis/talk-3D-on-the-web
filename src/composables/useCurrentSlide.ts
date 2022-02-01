@@ -1,4 +1,5 @@
 import Reveal from "reveal.js";
+import { ref } from "vue";
 
 /**
  * Callbacks used to activate the animations and event listeners
@@ -7,6 +8,7 @@ import Reveal from "reveal.js";
 export default function useCurrentSlide(slideId: string) {
   let onEnterCallback = () => {};
   let onLeaveCallback = () => {};
+  const isCurrentSlide = ref(false);
 
   function onSlideEnter(callback: () => any) {
     onEnterCallback = callback;
@@ -18,17 +20,20 @@ export default function useCurrentSlide(slideId: string) {
 
   Reveal.on("ready", ({ currentSlide }) => {
     if (currentSlide.id === slideId) {
+      isCurrentSlide.value = true;
       onEnterCallback();
     }
   });
 
   Reveal.on("slidechanged", ({ currentSlide, previousSlide }) => {
     if (currentSlide.id === slideId) {
+      isCurrentSlide.value = true;
       onEnterCallback();
     } else if (previousSlide && previousSlide.id === slideId) {
+      isCurrentSlide.value = false;
       onLeaveCallback();
     }
   });
 
-  return { onSlideEnter, onSlideLeave };
+  return { isCurrentSlide, onSlideEnter, onSlideLeave };
 }

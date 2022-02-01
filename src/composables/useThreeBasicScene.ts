@@ -1,6 +1,5 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { ref } from "vue";
 import useCurrentSlide from "./useCurrentSlide";
 
 export default function useThreeBasicScene(
@@ -56,21 +55,15 @@ export default function useThreeBasicScene(
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   });
 
-  // run the WebGL loop only when the slide is active
-
-  const { onSlideEnter, onSlideLeave } = useCurrentSlide(slideId);
-  const isCurrentSlide = ref(false);
-  onSlideEnter(() => {
-    isCurrentSlide.value = true;
-    loop();
-  });
-  onSlideLeave(() => (isCurrentSlide.value = false));
-
+  // function to execute on each frame, with setter to use in the app
   let tick = () => {};
-
   function onEachFrame(callback: () => void) {
     tick = callback;
   }
+
+  // run the WebGL loop only when the slide is active
+  const { isCurrentSlide, onSlideEnter } = useCurrentSlide(slideId);
+  onSlideEnter(loop);
 
   function loop() {
     tick();

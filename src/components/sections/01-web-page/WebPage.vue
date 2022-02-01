@@ -4,10 +4,10 @@
   <section>
     <section id="web-page">
       <div class="debug">
-        <label><input type="checkbox" id="debug" /> Debug</label>
+        <label><input type="checkbox" @change="toggleDebug" />Debug</label>
       </div>
 
-      <div class="main">
+      <div class="main" :class="{ perspective, depth }">
         <div class="parallax__group">
           <div class="parallax__layer parallax__layer--deep hero"></div>
           <div class="parallax__layer parallax__layer--back">
@@ -22,26 +22,30 @@
           <div class="parallax__layer parallax__layer--base">
             <div class="page-content">
               <label>
-                <input type="checkbox" id="depth" />
+                <input type="checkbox" v-model="depth" @change="toggleDepth" />
                 <div class="card">
                   <p>Depth</p>
                   <pre>
-          <code class="stylesheet">.card {
+<code ref="depthCode" class="stylesheet">.card {
   transform: none;
 }</code>
-  </pre>
+                  </pre>
                 </div>
               </label>
 
               <label>
-                <input type="checkbox" id="perspective" />
+                <input
+                  type="checkbox"
+                  v-model="perspective"
+                  @change="togglePerspective"
+                />
                 <div class="card">
                   <p>Perspective</p>
                   <pre>
-            <code class="stylesheet">main {
+<code ref="perspectiveCode" class="stylesheet">main {
   perspective: none;
 }</code>
-  </pre>
+                  </pre>
                 </div>
               </label>
             </div>
@@ -62,39 +66,37 @@
   </section>
 </template>
 
-<script setup>
-import { onMounted } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import RevealHighlight from "reveal.js/plugin/highlight/highlight";
 
-onMounted(() => {
-  const mainTag = document.querySelector("#web-page .main");
-  const debugInput = document.querySelector("#web-page input#debug");
-  const perspectiveInput = mainTag.querySelector("input#perspective");
-  const depthInput = mainTag.querySelector("input#depth");
-  const [depthCode, perspectiveCode] = mainTag.querySelectorAll("code");
+const perspective = ref(false);
+const depth = ref(false);
 
-  debugInput.addEventListener("click", () =>
-    document.body.classList.toggle("debug-on")
-  );
+const depthCode = ref();
+const perspectiveCode = ref();
 
-  perspectiveInput.addEventListener("change", (e) => {
-    const code = `main {
-  perspective: ${e.target.checked ? "300px" : "none"};
+function toggleDebug() {
+  document.body.classList.toggle("debug-on");
+}
+
+function toggleDepth(e: Event) {
+  const code = `.card:hover {
+  transform: ${
+    (e.target as HTMLInputElement).checked ? "translateZ(100px)" : "none"
+  };
 }`;
-    perspectiveCode.innerHTML = code;
-    RevealHighlight().highlightBlock(perspectiveCode);
-    mainTag.classList.toggle("perspective");
-  });
+  depthCode.value.innerHTML = code;
+  RevealHighlight().highlightBlock(depthCode.value);
+}
 
-  depthInput.addEventListener("change", (e) => {
-    const code = `.card:hover {
-  transform: ${e.target.checked ? "translateZ(100px)" : "none"};
+function togglePerspective(e: Event) {
+  const code = `main {
+  perspective: ${(e.target as HTMLInputElement).checked ? "300px" : "none"};
 }`;
-    depthCode.innerHTML = code;
-    RevealHighlight().highlightBlock(depthCode);
-    mainTag.classList.toggle("depth");
-  });
-});
+  perspectiveCode.value.innerHTML = code;
+  RevealHighlight().highlightBlock(perspectiveCode.value);
+}
 </script>
 
 <style lang="scss" scoped>
@@ -119,7 +121,11 @@ onMounted(() => {
   &__group {
     position: relative;
     height: 100vh;
-    transform-style: preserve-3d;
+
+    &,
+    * {
+      transform-style: preserve-3d;
+    }
   }
 
   &__layer {
@@ -237,6 +243,7 @@ onMounted(() => {
 
   input {
     position: absolute;
+    z-index: 1;
     top: 24px;
     left: 24px;
 
