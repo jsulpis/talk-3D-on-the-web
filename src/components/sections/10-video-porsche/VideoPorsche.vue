@@ -27,7 +27,10 @@ video.onmousedown = (event) => {
       }}
     </CodeBlock>
       <video id="video-porsche">
-        <source src="/src/assets/porsche-turntable.webm" type="video/webm" />
+        <source
+          src="/src/assets/videos/porsche-turntable.webm"
+          type="video/webm"
+        />
       </video>
 
       <div class="explainations">

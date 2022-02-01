@@ -1,7 +1,11 @@
 <template>
   <section id="outro">
     <div class="container bg-gradient">
-      <img class="q-and-a" src="/QandA.png" alt="questions and answers" />
+      <img
+        class="q-and-a"
+        src="/src/assets/img/QandA.png"
+        alt="questions and answers"
+      />
       <span class="pseudo">@jsulpis</span>
       <div class="networks">
         <a href="https://twitter.com/jsulpis">

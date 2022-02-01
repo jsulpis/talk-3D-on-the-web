@@ -205,7 +205,7 @@ function togglePerspective(e: Event) {
 ------------------------------------- */
 
 .hero {
-  background-image: url("/src/assets/pexels-photo-background.jpeg");
+  background-image: url("/src/assets/img/pexels-photo-background.jpeg");
   background-size: cover;
   background-position: center;
 }
