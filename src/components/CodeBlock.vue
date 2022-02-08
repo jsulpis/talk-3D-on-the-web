@@ -27,7 +27,7 @@ defineProps(["lang", "lines"]);
   background-color: #1e1e1e;
   border-radius: 8px;
   margin: 0 auto;
-  max-height: 80vh;
+  max-height: 82vh;
   overflow: auto;
 
   &::-webkit-scrollbar {

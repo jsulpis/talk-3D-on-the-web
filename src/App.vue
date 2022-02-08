@@ -9,6 +9,7 @@
       <ThreeCube />
       <ThreeZenikanard />
       <ThreeDrone />
+      <!-- The following slide is not in the deployed version to avoid killing low-end devices -->
       <!-- <ThreePerf /> -->
       <VideoJump />
       <VideoPorsche />

@@ -29,6 +29,9 @@
   {{`
 main {
   perspective: 300px;
+  * {
+    transform-style: preserve-3d;
+  }
 }
 
 section {
